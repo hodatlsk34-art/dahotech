@@ -374,7 +374,7 @@
   {
     "id": "wincare",
     "example": false,
-    "published": true,
+    "published": false,
     "featured": false,
     "name": "WinCare",
     "category": "Tiện ích",
@@ -531,7 +531,7 @@
         "text": "Bản cài đặt đầu tiên; sắp xếp tệp chịu được mất điện giữa chừng, bỏ qua tệp đang mở và tệp OneDrive."
       }
     ],
-    "rightsConfirmed": false,
-    "cleanConfirmed": false
+    "rightsConfirmed": true,
+    "cleanConfirmed": true
   }
 ]
