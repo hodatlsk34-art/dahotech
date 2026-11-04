@@ -49,3 +49,10 @@ Mã chỉ ghi được vào đúng kho này. Không gửi cho người khác, kh
 - Hai người cùng sửa: trang quản trị phát hiện và hỏi trước khi ghi đè.
 - Mọi lần lưu là một bản ghi trên GitHub, xem và khôi phục được ở tab Commits của kho.
 - Chỉ đổi cách bán sang "Hiện mã QR thanh toán" sau khi có hộ kinh doanh và website được UBND tỉnh xác nhận thông báo.
+
+## Triển khai hiện tại (04/11/2026)
+- Website: https://dahotech.onrender.com · Quản trị: https://dahotech.onrender.com/quan-tri.html
+- Kho mã: https://github.com/hodatlsk34-art/dahotech (nhánh `main`, tự triển khai khi có commit)
+- Render Static Site `dahotech` (srv-dbl9vijm8hqs738lk5ig): https://dashboard.render.com/static/srv-dbl9vijm8hqs738lk5ig
+- Tạo bằng công cụ Render (không qua Blueprint) nên các header trong `render.yaml` chưa áp dụng; cửa hàng vẫn tải dữ liệu mới nhờ `fetch(..., {cache:"no-cache"})`.
+- Việc còn lại: tạo mã truy cập GitHub (mục 3), điền thông tin người bán, xóa sản phẩm mẫu, đăng sản phẩm thật; chọn tên thương hiệu (đang tạm "Xưởng App").
