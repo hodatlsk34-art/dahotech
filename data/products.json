@@ -43,7 +43,7 @@
       }
     ],
     "video": "",
-    "demo": "https://tram-duyet-de.onrender.com",
+    "demo": "",
     "features": [
       {
         "title": "Kiểm định đề Word và PDF",
@@ -231,7 +231,7 @@
       }
     ],
     "video": "",
-    "demo": "https://cham-phieu-trac-nghiem.onrender.com/",
+    "demo": "",
     "features": [
       {
         "title": "3 mẫu phiếu, in theo danh sách",
@@ -335,8 +335,8 @@
         "a": "Không. Ảnh, danh sách và điểm đều xử lý và lưu trong trình duyệt của máy chấm."
       },
       {
-        "q": "Bấm 'Mở bản demo' thì cần gì?",
-        "a": "Trang yêu cầu mã kích hoạt. Bấm 'Dùng thử 14 ngày' để nhận liên kết dùng thử, mở liên kết là dùng được ngay."
+        "q": "Làm sao để dùng thử?",
+        "a": "Bấm 'Dùng thử 14 ngày' và gửi tin nhắn mẫu qua Zalo hoặc email. Bạn sẽ nhận liên kết dùng thử, mở là dùng được ngay; cần xem trực tiếp thì hẹn lịch để được hướng dẫn."
       },
       {
         "q": "Phiếu bị gấp, rách góc có chấm được không?",

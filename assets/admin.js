@@ -288,7 +288,6 @@ function viewEditor(keepScroll){
           <div class="tools"><span><button type="button" class="btn btn-sm btn-icon" data-imv="${i}:-1" aria-label="Lên trước" ${i===0?"disabled":""}>←</button> <button type="button" class="btn btn-sm btn-icon" data-imv="${i}:1" aria-label="Ra sau" ${i===p.images.length-1?"disabled":""}>→</button></span><button type="button" class="btn btn-sm btn-danger" data-idel="${i}">Xóa</button></div>
           <input data-k="images.${i}.caption" value="${esc(im.caption||"")}" placeholder="Chú thích ảnh"></div>`).join("")}</div>
         <div class="g2">
-          <label class="field"><span>Link bản demo</span>${inp("demo","https://… (bản dùng dữ liệu giả)","url")}</label>
           <label class="field"><span>Link video giới thiệu</span>${inp("video","https://youtube.com/…","url")}</label>
         </div>
       </section>
@@ -326,7 +325,7 @@ function viewEditor(keepScroll){
       </section>
       <section class="box" id="s-xac-nhan"><h2><span class="n">9</span>Xác nhận trước khi đăng</h2>
         <label class="check"><input type="checkbox" data-k="rightsConfirmed" data-type="bool" ${p.rightsConfirmed?"checked":""}> <span>Tôi có quyền bán phần mềm này: tự làm ngoài nhiệm vụ được giao, hoặc đã có thỏa thuận bằng văn bản với đơn vị liên quan.</span></label>
-        <label class="check"><input type="checkbox" data-k="cleanConfirmed" data-type="bool" ${p.cleanConfirmed?"checked":""}> <span>Ảnh, demo và bản phát hành không chứa dữ liệu học sinh thật, tên đơn vị khác, mật khẩu hay mã truy cập.</span></label>
+        <label class="check"><input type="checkbox" data-k="cleanConfirmed" data-type="bool" ${p.cleanConfirmed?"checked":""}> <span>Ảnh và bản phát hành không chứa dữ liệu học sinh thật, tên đơn vị khác, mật khẩu hay mã truy cập.</span></label>
       </section>
     </div>
     <aside class="side"><div class="pcard" id="pcard"></div><div class="checklist" id="clist"></div>

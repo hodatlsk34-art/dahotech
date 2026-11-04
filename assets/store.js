@@ -346,7 +346,6 @@ function viewProduct(p){
         <div class="p-cta">
           <button type="button" class="btn btn-primary" data-buy="">${I.play} ${fromPrice(p) === "Miễn phí" ? "Nhận bản miễn phí" : "Dùng thử " + esc(s.trialDays) + " ngày"}</button>
           ${(p.plans||[]).length ? `<a class="btn btn-outline" href="#bang-gia" data-jump="bang-gia">Xem bảng giá</a>` : ""}
-          ${p.demo ? `<a class="btn btn-ghost" href="${esc(p.demo)}" target="_blank" rel="noopener">Mở bản demo</a>` : ""}
           ${p.video ? `<a class="btn btn-ghost" href="${esc(p.video)}" target="_blank" rel="noopener">${I.play} Video</a>` : ""}
         </div>
         <div class="p-note"><span>${I.reply} Phản hồi trong ${esc(s.responseHours)} giờ làm việc</span><span>${I.shield} <a href="#giay-phep">Giấy phép sử dụng</a></span><span>Mã sản phẩm <span class="mono">${esc(String(p.id).toUpperCase())}</span></span></div>
