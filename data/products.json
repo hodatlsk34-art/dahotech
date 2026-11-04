@@ -374,7 +374,7 @@
   {
     "id": "wincare",
     "example": false,
-    "published": false,
+    "published": true,
     "featured": false,
     "name": "WinCare",
     "category": "Tiện ích",

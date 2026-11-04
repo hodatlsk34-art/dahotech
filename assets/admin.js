@@ -380,12 +380,12 @@ function bindEditor(p){
     const el = e.target;
     if (el.dataset.type === "slug") { p.id = uniqueId(slugify(el.value), p); el.value = p.id; }
     if (el.dataset.k && el.dataset.k.endsWith(".unit")) { const i = el.dataset.k.split(".")[1]; const pl = p.plans[i]; const s = $(`[data-pp="${i}"]`); if (s) s.textContent = priceOf(pl.price) + (pl.unit && Number(pl.price)>0 ? " " + pl.unit : ""); }
-    if (el.dataset.k === "rightsConfirmed" || el.dataset.k === "cleanConfirmed") { if (!canPublish(p) && p.published !== false) { p.published = false; $("#pubT").checked = false; toast("Đã chuyển về bản nháp vì chưa đủ mục bắt buộc."); } }
+    if (el.dataset.k === "rightsConfirmed" || el.dataset.k === "cleanConfirmed") { if (!canPublish(p) && p.published !== false) { p.published = false; p._autoDraft = true; $("#pubT").checked = false; toast("Tạm chuyển về bản nháp vì chưa đủ mục bắt buộc."); } else if (canPublish(p) && p._autoDraft) { p.published = true; delete p._autoDraft; $("#pubT").checked = true; toast("Đủ mục bắt buộc: sản phẩm hiện lại trên website."); } }
   };
   $("#back").onclick = () => { A._new = null; A.view = "list"; render(); };
   $("#pubT").onchange = e => {
     if (e.target.checked && !canPublish(p)) { e.target.checked = false; toast("Chưa hiện được: còn thiếu mục có dấu ! trong danh sách kiểm tra."); return; }
-    p.published = e.target.checked; refreshSide();
+    p.published = e.target.checked; delete p._autoDraft; refreshSide();
   };
   $("#pvBtn").onclick = () => preview(p); $("#pvBtn2").onclick = () => preview(p);
   $$("[data-plat]").forEach(b => b.onclick = () => { const x = b.dataset.plat; p.platforms = p.platforms || []; p.platforms = p.platforms.includes(x) ? p.platforms.filter(y => y !== x) : [...p.platforms, x]; b.setAttribute("aria-pressed", String(p.platforms.includes(x))); refreshSide(); });
@@ -523,7 +523,7 @@ function viewSettings(){
 /* ---------- save ---------- */
 function cleanProducts(){ return A.products.map(cleanOne); }
 function cleanOne(p){
-  { const q = clone(p);
+  { const q = clone(p); delete q._autoDraft;
     q.highlights = (q.highlights||[]).map(x => (x||"").trim()).filter(Boolean);
     q.features = (q.features||[]).filter(f => (f.title||"").trim() || (f.text||"").trim());
     q.requirements = (q.requirements||[]).filter(r => (r.value||"").trim());
