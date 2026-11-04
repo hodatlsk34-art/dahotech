@@ -90,7 +90,7 @@ function fromPrice(p){
   const paid = v.filter(x => isNum(x) && Number(x) > 0).map(Number);
   if (v.every(x => isNum(x) && Number(x) === 0)) return "Miễn phí";
   if (paid.length) return "Từ " + vnd(Math.min(...paid));
-  return v.some(x => isNum(x) && Number(x) === 0) ? "Dùng thử miễn phí" : "Liên hệ báo giá";
+  return v.some(x => !isNum(x)) ? "Liên hệ báo giá" : "Miễn phí";
 }
 const priceClass = p => { const t = fromPrice(p); return /^Từ/.test(t) ? "" : (/Miễn phí/.test(t) ? "free" : "ask"); };
 const minPaid = p => { const v = (p.plans||[]).map(x=>x.price).filter(x => isNum(x) && Number(x) > 0).map(Number); return v.length ? Math.min(...v) : Infinity; };
@@ -99,7 +99,9 @@ const statusPill = p => p.status === "beta" ? `<span class="pill beta">Thử ngh
 const visible = () => S.products.filter(p => p.published !== false);
 const usedCats = () => (S.site.categories||[]).concat(visible().map(p=>p.category).filter(c => c && !(S.site.categories||[]).includes(c))).filter((c,i,a) => a.indexOf(c)===i && visible().some(p => p.category === c));
 const zalo = () => S.site.zalo ? "https://zalo.me/" + String(S.site.zalo).replace(/\D/g,"") : "";
-const isRecent = p => { if (!p.updated) return false; const d = new Date(p.updated); return !isNaN(d) && (Date.now() - d) < 30*864e5; };
+const isRecent = p => { if (!p.updated) return false; const d = new Date(p.updated); if (isNaN(d) || (Date.now() - d) >= 30*864e5) return false;
+  const newest = visible().filter(x => x.updated).sort((a,b) => String(b.updated).localeCompare(String(a.updated))).slice(0,2);
+  return newest.includes(p); };
 
 function toast(msg){ const t=document.createElement("div"); t.className="toast"; t.setAttribute("role","status"); t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
 document.addEventListener("click", e => {
@@ -125,13 +127,11 @@ function shell(){
       <div class="dd"><button type="button" data-nav="san-pham" aria-expanded="false" aria-haspopup="true">Sản phẩm ${I.chev}</button><div class="dd-menu">${catLinks}</div></div>
       <a href="#giai-phap" data-nav="giai-phap">Giải pháp</a>
       <a href="#dat-lam" data-nav="dat-lam">Đặt làm riêng</a>
-      <a href="#cach-mua" data-nav="cach-mua">Cách mua</a>
       <a href="#lien-he" data-nav="lien-he">Liên hệ</a>
     </nav>
     <div class="tools">
       <button type="button" class="iconbtn" id="sBtn" aria-label="Tìm sản phẩm">${I.search}</button>
-      <a class="iconbtn" href="#lien-he" aria-label="Liên hệ">${I.chat}</a>
-      <a class="btn btn-primary btn-sm" href="#san-pham" data-setcat="">${I.bag} Khám phá</a>
+      <button type="button" class="btn btn-primary btn-sm" id="trialBtn">${I.play} Dùng thử miễn phí</button>
       <button type="button" class="iconbtn menu-btn" id="mBtn" aria-label="Mở menu" aria-expanded="false">${I.menu}</button>
     </div></div>`;
   $("#drawer").innerHTML = `<div class="scrim" data-close-drawer></div><nav aria-label="Menu">
@@ -149,6 +149,7 @@ function shell(){
   $$("[data-close-drawer]").forEach(b => b.onclick = closeDrawer);
   $$("#drawer a").forEach(a => a.addEventListener("click", closeDrawer));
   $("#sBtn").onclick = searchDialog;
+  $("#trialBtn").onclick = () => contactDialog("Xin dùng thử miễn phí", `Chào bạn, mình ở [tên đơn vị]. Mình muốn dùng thử [tên phần mềm] trong ${S.site.trialDays} ngày.`, "Xin dùng thử", `<p>Ghi tên phần mềm bạn quan tâm (xem ở <a href="#san-pham" data-setcat="" data-close>trang Sản phẩm</a>), rồi gửi qua Zalo hoặc email. ${esc(S.site.owner)} gửi link hoặc mã dùng thử trong ${esc(S.site.responseHours)} giờ làm việc.</p>`);
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
   $("#foot").innerHTML = `<div class="wrap">
@@ -166,11 +167,11 @@ function closeDrawer(){ const d = $("#drawer"); if (d) d.classList.remove("open"
 
 /* ---------- cards ---------- */
 function cardHTML(p){
-  const badges = [p.featured ? `<span class="badge hot">Nổi bật</span>` : "", isRecent(p) ? `<span class="badge new">Mới cập nhật</span>` : (hasFree(p) ? `<span class="badge free">Có bản miễn phí</span>` : "")];
+  const badge = p.featured ? `<span class="badge hot">Nổi bật</span>` : isRecent(p) ? `<span class="badge new">Mới cập nhật</span>` : (hasFree(p) ? `<span class="badge free">Có bản miễn phí</span>` : "");
   return `<a class="card" href="#sp-${esc(p.id)}">
-    <div class="media"><img src="${esc(cover(p))}" alt="Giao diện ${esc(p.name)}" loading="lazy" width="800" height="500"><div class="badges">${badges[0]||"<span></span>"}${badges[1]||""}</div></div>
+    <div class="media"><img src="${esc(cover(p))}" alt="Giao diện ${esc(p.name)}" loading="lazy" width="800" height="500">${badge ? `<div class="badges">${badge}</div>` : ""}</div>
     <div class="body">
-      <div class="meta">${statusPill(p)}${(p.platforms||[]).slice(0,2).map(x=>`<span class="pill gray">${esc(x)}</span>`).join("")}</div>
+      <div class="meta">${statusPill(p)}${(p.platforms||[]).slice(0,1).map(x=>`<span class="pill gray">${esc(x)}</span>`).join("")}</div>
       <h3>${esc(p.name)}</h3>
       <p>${esc(p.tagline)}</p>
       <div class="foot"><span class="price-tag ${priceClass(p)}">${esc(fromPrice(p))}</span><span class="go">Chi tiết ${I.arrow}</span></div>
@@ -196,18 +197,18 @@ function viewHome(){
       <p class="lead">${esc(s.heroText||"")}</p>
       <div class="cta"><a class="btn btn-primary" href="#san-pham" data-setcat="">${I.bag} Khám phá sản phẩm</a><a class="btn btn-outline" href="#dat-lam">${I.code} Đặt làm phần mềm riêng</a></div>
       ${setup && !S.preview ? `<div class="notice">Thông tin người bán còn trống. Vào trang quản trị → Cài đặt cửa hàng để điền.</div>` : ""}
-      <div class="stats">
-        <div class="stat">${I.box}<div><b>${list.length}</b><span>sản phẩm đang bán</span></div></div>
-        <div class="stat">${I.timer}<div><b>${esc(s.trialDays)} ngày</b><span>dùng thử miễn phí</span></div></div>
-        <div class="stat">${I.reply}<div><b>${esc(s.responseHours)} giờ</b><span>phản hồi yêu cầu</span></div></div>
-        <div class="stat">${I.refund}<div><b>${esc(s.refundDays)} ngày</b><span>hoàn tiền theo chính sách</span></div></div>
-      </div>
     </div>
     <div class="devices" aria-hidden="${feat ? "false" : "true"}">
       <div class="laptop"><div class="screen"><img src="${esc(feat ? cover(feat) : genCover(fake))}" alt="${feat ? "Giao diện " + esc(feat.name) : ""}" width="1600" height="1000"></div><div class="base"></div></div>
       <div class="phone"><img src="${esc(second && hasImg(second) ? cover(second) : genCover(second || fake, true))}" alt="" width="540" height="1080"></div>
       ${feat ? `<a class="float-tag" href="#sp-${esc(feat.id)}"><span class="dot">${I.spark}</span><span><b>${esc(feat.name)}</b><small>${esc(fromPrice(feat))}</small></span></a>` : ""}
     </div>
+  </div></section>
+  <section class="statbar" aria-label="Cam kết"><div class="wrap">
+    ${list.length ? `<div class="stat">${I.box}<div><b>${list.length} sản phẩm</b><span>đang bán</span></div></div>` : ""}
+    <div class="stat">${I.timer}<div><b>${esc(s.trialDays)} ngày</b><span>dùng thử miễn phí</span></div></div>
+    <div class="stat">${I.reply}<div><b>${esc(s.responseHours)} giờ</b><span>phản hồi yêu cầu</span></div></div>
+    <div class="stat">${I.refund}<div><b>${esc(s.refundDays)} ngày</b><span>hoàn tiền</span></div></div>
   </div></section>
 
   ${cats.length ? `<section class="section"><div class="wrap">
@@ -219,7 +220,8 @@ function viewHome(){
 
   <section class="section ${cats.length ? "alt" : ""}"><div class="wrap">
     <div class="s-head"><div><h2>Sản phẩm nổi bật</h2><p>Phần mềm và Web App do ${esc(s.name)} phát triển</p></div>${list.length ? `<a class="link-more" href="#san-pham" data-setcat="">Xem tất cả ${I.arrow}</a>` : ""}</div>
-    <div class="grid four">${featured.length ? featured.map(cardHTML).join("") : emptyBox("Sản phẩm đang được cập nhật", "Bạn có nhu cầu riêng? Hãy gửi mô tả để nhận đề xuất và báo giá.", `<a class="btn btn-primary btn-sm" href="#dat-lam">Đặt làm phần mềm riêng</a>`)}</div>
+    <div class="grid four home-feat">${featured.length ? featured.map(cardHTML).join("") : emptyBox("Sản phẩm đang được cập nhật", "Bạn có nhu cầu riêng? Hãy gửi mô tả để nhận đề xuất và báo giá.", `<a class="btn btn-primary btn-sm" href="#dat-lam">Đặt làm phần mềm riêng</a>`)}</div>
+    ${list.length > 4 ? `<div class="more-m"><a class="btn btn-outline" href="#san-pham" data-setcat="">Xem tất cả ${list.length} sản phẩm ${I.arrow}</a></div>` : ""}
   </div></section>
 
   ${cats.length >= 2 ? `<section class="section"><div class="wrap">
@@ -338,7 +340,8 @@ function viewProduct(p){
         <div class="meta">${statusPill(p)}${p.category?`<span class="pill">${esc(p.category)}</span>`:""}${(p.platforms||[]).map(x=>`<span class="pill gray">${esc(x)}</span>`).join("")}${p.version?`<span class="pill gray">Phiên bản ${esc(p.version)}</span>`:""}</div>
         <h1>${esc(p.name)}</h1>
         <p class="tagline">${esc(p.tagline)}</p>
-        <div class="p-price"><b class="${pc}">${esc(fromPrice(p))}</b>${p.updated?`<span class="muted">Cập nhật ${esc(fmtDate(p.updated))}</span>`:""}</div>
+        <div class="p-price"><b class="${pc}">${esc(fromPrice(p))}</b>${hasFree(p) && fromPrice(p) !== "Miễn phí" ? `<span class="pill live">Có bản dùng thử miễn phí</span>` : ""}</div>
+        ${p.updated?`<p class="muted small-note">Cập nhật ${esc(fmtDate(p.updated))}</p>`:""}
         ${(p.highlights||[]).filter(Boolean).length ? `<ul class="checks">${p.highlights.filter(Boolean).map(h=>`<li><span class="ok">${I.check}</span><span>${esc(h)}</span></li>`).join("")}</ul>` : ""}
         <div class="p-cta">
           <button type="button" class="btn btn-primary" data-buy="">${I.play} Dùng thử ${esc(s.trialDays)} ngày</button>
@@ -364,6 +367,7 @@ function viewProduct(p){
     ${(p.requirements||[]).length ? `<section class="p-sec" id="yeu-cau"><h2>Yêu cầu hệ thống</h2><table class="req"><tbody>${p.requirements.map(r=>`<tr><th scope="row">${esc(r.label)}</th><td>${esc(r.value)}</td></tr>`).join("")}</tbody></table></section>` : ""}
     ${(p.faq||[]).length ? `<section class="p-sec" id="hoi-dap"><h2>Hỏi đáp</h2><div class="faq">${p.faq.map(f=>`<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join("")}</div></section>` : ""}
     ${(p.changelog||[]).length ? `<section class="p-sec" id="cap-nhat"><h2>Nhật ký cập nhật</h2><ul class="log">${p.changelog.map(c=>`<li><div class="v"><b>Phiên bản ${esc(c.version)}</b><small>${esc(fmtDate(c.date))}</small></div><p>${esc(c.text)}</p></li>`).join("")}</ul></section>` : ""}
+    <div class="buybar" role="region" aria-label="Mua nhanh"><div><b class="${pc}">${esc(fromPrice(p))}</b><small>${esc(p.name)}</small></div><button type="button" class="btn btn-primary btn-sm" data-buy="">Dùng thử</button></div>
     <section style="padding-block:24px 72px"><div class="cta-band"><span class="art">${I.play.replace('class="ic"','')}</span><div><h2>Thử ${esc(p.name)} trên công việc thật của bạn</h2><p>Dùng thử ${esc(s.trialDays)} ngày, có hướng dẫn cài đặt và hỗ trợ trực tiếp.</p></div><button type="button" class="btn btn-white" data-buy="">Xin dùng thử ${I.arrow}</button></div></section>
   </div>`;
   let cur = 0;
