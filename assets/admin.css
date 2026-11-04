@@ -1,12 +1,12 @@
 /* Trang quản trị — bàn làm việc: cột soạn thảo bên trái, thẻ xem trước + danh sách kiểm tra bên phải */
 :root{
-  --bg:#f3f4fa; --surface:#ffffff; --surface-2:#eef0f9; --ink:#14163a; --muted:#5c6085; --line:#dcdff0;
-  --accent:#3434c9; --accent-ink:#ffffff; --accent-soft:#e8e9fc;
-  --ok:#147a4a; --ok-soft:#dff3e8; --warn:#94570a; --warn-soft:#fdf0d6; --bad:#b42318; --bad-soft:#fde8e6;
-  --mark:#ffe066; --mark-ink:#2b2400;
-  --f-display:"Bricolage Grotesque","Be Vietnam Pro",system-ui,sans-serif;
+  --bg:#F5F8FC; --surface:#ffffff; --surface-2:#EEF4FF; --ink:#172554; --muted:#64748B; --line:#E2E8F0;
+  --accent:#2563EB; --accent-ink:#ffffff; --accent-soft:#EFF6FF;
+  --ok:#16A34A; --ok-soft:#F0FDF4; --warn:#B45309; --warn-soft:#FFFBEB; --bad:#DC2626; --bad-soft:#FEF2F2;
+  --mark:#06B6D4; --mark-ink:#ffffff;
+  --f-display:"Be Vietnam Pro",system-ui,sans-serif;
   --f-body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --f-mono:ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0e0f22; --surface:#171933; --surface-2:#1f2245; --ink:#e9eaff; --muted:#a2a6cc; --line:#2b2e55;
