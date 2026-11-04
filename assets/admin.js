@@ -481,7 +481,7 @@ function viewSettings(){
       <label class="field"><span>Đoạn giới thiệu</span><textarea data-s="heroText" rows="3">${esc(s.heroText||"")}</textarea></label>
     </section>
     <section class="box"><h2>Cam kết hiển thị</h2>
-      <div class="g2">${f("trialDays","Số ngày dùng thử","","number")}${f("refundDays","Số ngày hoàn tiền","","number")}</div>
+      <div class="g2">${f("refundDays","Số ngày hoàn tiền","","number")}</div>
       <div class="g2">${f("responseHours","Phản hồi trong (giờ làm việc)","","number")}${f("deliveryHours","Bàn giao sau khi nhận tiền (giờ)","","number")}</div>
       ${f("updated","Ngày cập nhật chính sách","04/11/2026")}
     </section>

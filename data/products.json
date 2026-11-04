@@ -273,7 +273,7 @@
         "unit": "",
         "audience": "Thử trên một kỳ kiểm tra thật",
         "items": [
-          "Đủ tính năng trong 14 ngày",
+          "Đủ tính năng trong thời gian dùng thử",
           "Hết hạn vẫn giữ dữ liệu",
           "Hướng dẫn qua Zalo"
         ],
@@ -336,7 +336,7 @@
       },
       {
         "q": "Làm sao để dùng thử?",
-        "a": "Bấm 'Dùng thử 14 ngày' và gửi tin nhắn mẫu qua Zalo hoặc email. Bạn sẽ nhận liên kết dùng thử, mở là dùng được ngay; cần xem trực tiếp thì hẹn lịch để được hướng dẫn."
+        "a": "Bấm 'Liên hệ dùng thử' và gửi tin nhắn mẫu qua Zalo hoặc email. Bạn sẽ nhận liên kết dùng thử, mở là dùng được ngay; cần xem trực tiếp thì hẹn lịch để được hướng dẫn."
       },
       {
         "q": "Phiếu bị gấp, rách góc có chấm được không?",

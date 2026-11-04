@@ -134,7 +134,7 @@ function shell(){
     </nav>
     <div class="tools">
       <button type="button" class="iconbtn" id="sBtn" aria-label="Tìm sản phẩm">${I.search}</button>
-      <button type="button" class="btn btn-primary btn-sm" id="trialBtn">${I.play} Dùng thử miễn phí</button>
+      <button type="button" class="btn btn-primary btn-sm" id="trialBtn">${I.play} Liên hệ dùng thử</button>
       <button type="button" class="iconbtn menu-btn" id="mBtn" aria-label="Mở menu" aria-expanded="false">${I.menu}</button>
     </div></div>`;
   $("#drawer").innerHTML = `<div class="scrim" data-close-drawer></div><nav aria-label="Menu">
@@ -152,7 +152,7 @@ function shell(){
   $$("[data-close-drawer]").forEach(b => b.onclick = closeDrawer);
   $$("#drawer a").forEach(a => a.addEventListener("click", closeDrawer));
   $("#sBtn").onclick = searchDialog;
-  $("#trialBtn").onclick = () => contactDialog("Xin dùng thử miễn phí", `Chào bạn, mình ở [tên đơn vị]. Mình muốn dùng thử [tên phần mềm] trong ${S.site.trialDays} ngày.`, "Xin dùng thử", `<p>Ghi tên phần mềm bạn quan tâm (xem ở <a href="#san-pham" data-setcat="" data-close>trang Sản phẩm</a>), rồi gửi qua Zalo hoặc email. ${esc(S.site.owner)} gửi link hoặc mã dùng thử trong ${esc(S.site.responseHours)} giờ làm việc.</p>`);
+  $("#trialBtn").onclick = () => contactDialog("Liên hệ dùng thử", `Chào bạn, mình ở [tên đơn vị]. Mình muốn dùng thử [tên phần mềm].`, "Liên hệ dùng thử", `<p>Ghi tên phần mềm bạn quan tâm (xem ở <a href="#san-pham" data-setcat="" data-close>trang Sản phẩm</a>), rồi gửi qua Zalo hoặc email. ${esc(S.site.owner)} gửi link hoặc mã dùng thử trong ${esc(S.site.responseHours)} giờ làm việc.</p>`);
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
   $("#foot").innerHTML = `<div class="wrap">
@@ -209,7 +209,7 @@ function viewHome(){
   </div></section>
   <section class="statbar" aria-label="Cam kết"><div class="wrap">
     ${list.length ? `<div class="stat">${I.box}<div><b>${list.length} sản phẩm</b><span>đang bán</span></div></div>` : ""}
-    <div class="stat">${I.timer}<div><b>${esc(s.trialDays)} ngày</b><span>dùng thử miễn phí</span></div></div>
+    <div class="stat">${I.timer}<div><b>Dùng thử</b><span>liên hệ để được cấp</span></div></div>
     <div class="stat">${I.reply}<div><b>${esc(s.responseHours)} giờ</b><span>phản hồi yêu cầu</span></div></div>
     <div class="stat">${I.refund}<div><b>${esc(s.refundDays)} ngày</b><span>hoàn tiền</span></div></div>
   </div></section>
@@ -236,7 +236,7 @@ function viewHome(){
     <div class="s-head center"><h2>Vì sao chọn ${esc(s.name)}?</h2></div>
     <div class="why">
       <div><span class="tile">${I.code}</span><span><b>Tự phát triển</b><span>Làm từ công việc thật, cập nhật liên tục theo góp ý.</span></span></div>
-      <div><span class="tile">${I.play}</span><span><b>Dùng thử trước khi mua</b><span>${esc(s.trialDays)} ngày đủ tính năng, không cần trả trước.</span></span></div>
+      <div><span class="tile">${I.play}</span><span><b>Dùng thử trước khi mua</b><span>Liên hệ để được dùng thử, không cần trả trước.</span></span></div>
       <div><span class="tile">${I.user}</span><span><b>Hỗ trợ trực tiếp</b><span>Trao đổi với người làm ra phần mềm, hướng dẫn cài đặt.</span></span></div>
       <div><span class="tile">${I.shield}</span><span><b>Giấy phép rõ ràng</b><span>Phạm vi, thời hạn, bảo hành ghi rõ khi bàn giao.</span></span></div>
     </div>
@@ -251,7 +251,7 @@ function viewHome(){
 }
 const processHTML = () => `<ol class="process">
   <li><b>Liên hệ</b><span>Nhắn Zalo hoặc email kèm mã sản phẩm.</span></li>
-  <li><b>Dùng thử</b><span>Nhận link hoặc mã dùng thử ${esc(S.site.trialDays)} ngày.</span></li>
+  <li><b>Dùng thử</b><span>Liên hệ để nhận link hoặc mã dùng thử.</span></li>
   <li><b>Báo giá</b><span>Xác nhận gói, phạm vi, thời hạn.</span></li>
   <li><b>Thanh toán</b><span>Chuyển khoản theo thông tin gửi riêng.</span></li>
   <li><b>Bàn giao</b><span>Mã kích hoạt, hướng dẫn trong ${esc(S.site.deliveryHours)} giờ.</span></li></ol>`;
@@ -347,7 +347,7 @@ function viewProduct(p){
         ${p.updated?`<p class="muted small-note">Cập nhật ${esc(fmtDate(p.updated))}</p>`:""}
         ${(p.highlights||[]).filter(Boolean).length ? `<ul class="checks">${p.highlights.filter(Boolean).map(h=>`<li><span class="ok">${I.check}</span><span>${esc(h)}</span></li>`).join("")}</ul>` : ""}
         <div class="p-cta">
-          ${p.download ? dlBtn(p, "btn-primary", dlLabel(p)) : `<button type="button" class="btn btn-primary" data-buy="">${I.play} ${fromPrice(p) === "Miễn phí" ? "Nhận bản miễn phí" : "Dùng thử " + esc(s.trialDays) + " ngày"}</button>`}
+          ${p.download ? dlBtn(p, "btn-primary", dlLabel(p)) : `<button type="button" class="btn btn-primary" data-buy="">${I.play} ${fromPrice(p) === "Miễn phí" ? "Nhận bản miễn phí" : "Liên hệ dùng thử"}</button>`}
           ${(p.plans||[]).length ? `<a class="btn btn-outline" href="#bang-gia" data-jump="bang-gia">Xem bảng giá</a>` : ""}
           ${p.video ? `<a class="btn btn-ghost" href="${esc(p.video)}" target="_blank" rel="noopener">${I.play} Video</a>` : ""}
         </div>
@@ -370,8 +370,8 @@ function viewProduct(p){
     ${(p.requirements||[]).length ? `<section class="p-sec" id="yeu-cau"><h2>Yêu cầu hệ thống</h2><table class="req"><tbody>${p.requirements.map(r=>`<tr><th scope="row">${esc(r.label)}</th><td>${esc(r.value)}</td></tr>`).join("")}</tbody></table></section>` : ""}
     ${(p.faq||[]).length ? `<section class="p-sec" id="hoi-dap"><h2>Hỏi đáp</h2><div class="faq">${p.faq.map(f=>`<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join("")}</div></section>` : ""}
     ${(p.changelog||[]).length ? `<section class="p-sec" id="cap-nhat"><h2>Nhật ký cập nhật</h2><ul class="log">${p.changelog.map(c=>`<li><div class="v"><b>Phiên bản ${esc(c.version)}</b><small>${esc(fmtDate(c.date))}</small></div><p>${esc(c.text)}</p></li>`).join("")}</ul></section>` : ""}
-    <div class="buybar" role="region" aria-label="Mua nhanh"><div><b class="${pc}">${esc(fromPrice(p))}</b><small>${esc(p.name)}</small></div>${p.download ? dlBtn(p, "btn-primary btn-sm", "Tải về") : `<button type="button" class="btn btn-primary btn-sm" data-buy="">${fromPrice(p) === "Miễn phí" ? "Nhận miễn phí" : "Dùng thử"}</button>`}</div>
-    <section style="padding-block:24px 72px"><div class="cta-band"><span class="art">${I.play.replace('class="ic"','')}</span><div><h2>${fromPrice(p) === "Miễn phí" ? `Dùng ${esc(p.name)} miễn phí ngay hôm nay` : `Thử ${esc(p.name)} trên công việc thật của bạn`}</h2><p>${fromPrice(p) === "Miễn phí" ? "Miễn phí, có hướng dẫn cài đặt và hỗ trợ trực tiếp khi cần." : `Dùng thử ${esc(s.trialDays)} ngày, có hướng dẫn cài đặt và hỗ trợ trực tiếp.`}</p></div>${p.download ? dlBtn(p, "btn-white", "Tải về miễn phí") : `<button type="button" class="btn btn-white" data-buy="">${fromPrice(p) === "Miễn phí" ? "Nhận bản miễn phí" : "Xin dùng thử"} ${I.arrow}</button>`}</div></section>
+    <div class="buybar" role="region" aria-label="Mua nhanh"><div><b class="${pc}">${esc(fromPrice(p))}</b><small>${esc(p.name)}</small></div>${p.download ? dlBtn(p, "btn-primary btn-sm", "Tải về") : `<button type="button" class="btn btn-primary btn-sm" data-buy="">${fromPrice(p) === "Miễn phí" ? "Nhận miễn phí" : "Liên hệ dùng thử"}</button>`}</div>
+    <section style="padding-block:24px 72px"><div class="cta-band"><span class="art">${I.play.replace('class="ic"','')}</span><div><h2>${fromPrice(p) === "Miễn phí" ? `Dùng ${esc(p.name)} miễn phí ngay hôm nay` : `Thử ${esc(p.name)} trên công việc thật của bạn`}</h2><p>${fromPrice(p) === "Miễn phí" ? "Miễn phí, có hướng dẫn cài đặt và hỗ trợ trực tiếp khi cần." : "Liên hệ để được dùng thử, có hướng dẫn cài đặt và hỗ trợ trực tiếp."}</p></div>${p.download ? dlBtn(p, "btn-white", "Tải về miễn phí") : `<button type="button" class="btn btn-white" data-buy="">${fromPrice(p) === "Miễn phí" ? "Nhận bản miễn phí" : "Liên hệ dùng thử"} ${I.arrow}</button>`}</div></section>
   </div>`;
   let cur = 0;
   const show = i => { cur = i; $("#gImg").src = im(i); $("#gImg").alt = imgs[i].caption || "Giao diện " + p.name; $("#gCap").textContent = imgs[i].caption || "";
@@ -475,22 +475,22 @@ function buy(p, plan){
     const qr = `https://img.vietqr.io/image/${encodeURIComponent(s.bank.bin)}-${encodeURIComponent(s.bank.account)}-compact2.png?amount=${Number(plan.price)}&addInfo=${encodeURIComponent(code)}&accountName=${encodeURIComponent(s.bank.holder)}`;
     extra = `<img class="qr" src="${qr}" alt="Mã VietQR chuyển khoản ${vnd(plan.price)}"><div class="copyline">Nội dung chuyển khoản:<code>${esc(code)} + số điện thoại</code></div>`;
   }
-  contactDialog(plan ? `${plan.name} · ${planPrice(plan)}` : `Dùng thử ${p.name}`, msg, (plan ? "Mua " : "Dùng thử ") + code, extra);
+  contactDialog(plan ? `${plan.name} · ${planPrice(plan)}` : `Liên hệ dùng thử ${p.name}`, msg, (plan ? "Mua " : "Dùng thử ") + code, extra);
 }
 
 /* ---------- text pages ---------- */
 const ptabs = cur => `<div class="ptabs">${[["giay-phep","Giấy phép sử dụng"],["bao-mat","Bảo mật"],["hoan-tien","Bảo hành & hoàn tiền"]].map(([h,l])=>`<a href="#${h}"${h===cur?' aria-current="page"':""}>${l}</a>`).join("")}</div>`;
 const PAGES = {
   "cach-mua": s => ["Cách dùng thử và mua", "Website giới thiệu sản phẩm. Dùng thử, báo giá và thanh toán thực hiện qua trao đổi trực tiếp.", `${processHTML()}
-    <h2>1. Liên hệ</h2><p>Mở trang sản phẩm, bấm "Dùng thử" để lấy tin nhắn mẫu có mã sản phẩm, gửi qua Zalo hoặc email.</p>
-    <h2>2. Dùng thử</h2><p>Nhận link hoặc mã dùng thử ${esc(s.trialDays)} ngày. Hết hạn, dữ liệu vẫn nằm trên máy bạn; nhập mã chính thức là dùng tiếp.</p>
+    <h2>1. Liên hệ</h2><p>Mở trang sản phẩm, bấm "Liên hệ dùng thử" để lấy tin nhắn mẫu có mã sản phẩm, gửi qua Zalo hoặc email.</p>
+    <h2>2. Dùng thử</h2><p>Nhận link hoặc mã dùng thử; thời hạn dùng thử được thống nhất khi liên hệ. Hết hạn, dữ liệu vẫn nằm trên máy bạn; nhập mã chính thức là dùng tiếp.</p>
     <h2>3. Báo giá và thanh toán</h2><p>Báo giá ghi rõ gói, thời hạn, phạm vi sử dụng. Chuyển khoản theo thông tin gửi riêng, nội dung ghi mã sản phẩm. Cần hóa đơn, vui lòng báo trước khi thanh toán.</p>
     <h2>4. Bàn giao</h2><p>Trong ${esc(s.deliveryHours)} giờ sau khi nhận tiền: mã kích hoạt hoặc bộ cài, hướng dẫn sử dụng, xác nhận giấy phép. Sản phẩm cần máy chủ được cài lên tài khoản của đơn vị.</p>`],
   "giay-phep": s => ["Giấy phép sử dụng phần mềm", `Cập nhật ${esc(s.updated)}.`, `${ptabs("giay-phep")}
     <h2>1. Bên cung cấp</h2><p>${esc(s.owner)}, mã số thuế ${esc(s.taxCode)}, ${esc(s.area)}. Liên hệ: ${esc(s.email)}, ${esc(s.phone)}.</p>
     <h2>2. Bạn nhận được gì</h2><p>Quyền sử dụng phần mềm theo gói đã mua: phạm vi (một đơn vị, một máy hoặc một người) và thời hạn (theo năm, theo đợt hoặc vĩnh viễn) ghi trong xác nhận giấy phép. Quyền tác giả và mã nguồn vẫn thuộc bên cung cấp, trừ khi có thỏa thuận khác bằng văn bản.</p>
     <h2>3. Không được làm</h2><ul><li>Bán lại, cho thuê, chia sẻ mã kích hoạt hoặc bộ cài cho đơn vị khác.</li><li>Dịch ngược, sửa đổi để gỡ cơ chế kích hoạt hay dùng thử.</li><li>Dùng phần mềm cho mục đích trái pháp luật.</li></ul>
-    <h2>4. Dùng thử</h2><p>Bản dùng thử có đủ tính năng trong ${esc(s.trialDays)} ngày, trừ khi trang sản phẩm ghi khác. Hết hạn, phần mềm khóa thao tác nhưng không xóa dữ liệu.</p>
+    <h2>4. Dùng thử</h2><p>Bản dùng thử có đủ tính năng trong thời hạn được thống nhất khi liên hệ, trừ khi trang sản phẩm ghi khác. Hết hạn, phần mềm khóa thao tác nhưng không xóa dữ liệu.</p>
     <h2>5. Cập nhật và hỗ trợ</h2><p>Gói theo năm: cập nhật và hỗ trợ trong thời hạn. Gói vĩnh viễn: dùng mãi phiên bản đã mua, kèm 12 tháng cập nhật.</p>
     <h2>6. Dữ liệu</h2><p>Dữ liệu bạn nhập thuộc về bạn. Bạn chịu trách nhiệm sao lưu định kỳ theo hướng dẫn của từng phần mềm.</p>
     <h2>7. Giới hạn trách nhiệm</h2><p>Phần mềm được kiểm thử như mô tả nhưng không cam kết hoàn toàn không có lỗi. Kết quả quan trọng (điểm thi, hồ sơ) cần người có thẩm quyền rà soát trước khi dùng. Trách nhiệm bồi thường không vượt số tiền đã trả cho gói liên quan, trừ trường hợp pháp luật quy định khác. Điều khoản này không làm mất quyền của người tiêu dùng theo pháp luật Việt Nam.</p>
