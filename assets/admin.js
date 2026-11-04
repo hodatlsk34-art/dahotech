@@ -268,7 +268,7 @@ function viewEditor(keepScroll){
         </div>
         <div class="field"><span>Chạy trên</span><div class="chipset" id="plats">${[...new Set([...PLATFORMS, ...(p.platforms||[])])].map(x=>`<button type="button" data-plat="${esc(x)}" aria-pressed="${(p.platforms||[]).includes(x)}">${esc(x)}</button>`).join("")}</div></div>
         <div class="g3">
-          <label class="field"><span>Trạng thái</span><select data-k="status"><option value="live" ${p.status!=="beta"?"selected":""}>Đang dùng thực tế</option><option value="beta" ${p.status==="beta"?"selected":""}>Thử nghiệm</option></select></label>
+          <label class="field"><span>Trạng thái</span><select data-k="status"><option value="live" ${p.status!=="beta"?"selected":""}>Đã phát hành</option><option value="beta" ${p.status==="beta"?"selected":""}>Thử nghiệm</option></select></label>
           <label class="field"><span>Phiên bản</span>${inp("version","1.0")}</label>
           <label class="field"><span>Ngày cập nhật</span>${inp("updated","","date")}</label>
         </div>
@@ -345,7 +345,7 @@ const rowTools = (arr,i,n) => `<div class="tl"><button type="button" class="btn 
 function refreshSide(){
   const p = A.products[A.editId]; if (!p) return;
   const pc = $("#pcard"); if (!pc) return;
-  pc.innerHTML = `${thumbHTML(p)}<div class="b"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill ${p.status==="beta"?"warn":"ok"}">${p.status==="beta"?"Thử nghiệm":"Đang dùng thực tế"}</span>${(p.platforms||[]).map(x=>`<span class="pill">${esc(x)}</span>`).join("")}</div>
+  pc.innerHTML = `${thumbHTML(p)}<div class="b"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill ${p.status==="beta"?"warn":"ok"}">${p.status==="beta"?"Thử nghiệm":"Đã phát hành"}</span>${(p.platforms||[]).map(x=>`<span class="pill">${esc(x)}</span>`).join("")}</div>
     <h3>${esc(p.name||"Tên sản phẩm")}</h3><p>${esc(p.tagline||"Câu giới thiệu sẽ hiện ở đây.")}</p><div class="foot"><span>${esc(fromPrice(p))}</span><span style="color:var(--accent)">Xem chi tiết →</span></div></div>`;
   const c = checks(p), sc = score(p), req = c.filter(x => x.req);
   $("#clist").innerHTML = `<h3><span>Danh sách kiểm tra</span><span class="muted small">${sc}%</span></h3>
@@ -393,7 +393,9 @@ function bindEditor(p){
   $$("[data-hot]").forEach(r => r.onchange = () => { p.plans.forEach((pl,i) => pl.highlight = i === +r.dataset.hot); viewEditor(true); });
   const blank = { features:{title:"",text:""}, plans:{name:"",price:null,unit:"/năm",audience:"",items:[],highlight:false}, requirements:{label:"",value:""}, faq:{q:"",a:""}, changelog:{version:p.version||"",date:today(),text:""} };
   $$("[data-add]").forEach(b => b.onclick = () => { const a = b.dataset.add; p[a] = p[a] || []; if (a === "changelog") p[a].unshift(clone(blank[a])); else p[a].push(clone(blank[a])); viewEditor(true); });
-  $$("[data-rm]").forEach(b => b.onclick = () => { const [a,i] = b.dataset.rm.split(":"); p[a].splice(+i,1); viewEditor(true); });
+  const RM_LABEL = { features:"tính năng", plans:"gói giá", requirements:"dòng yêu cầu", faq:"câu hỏi", changelog:"phiên bản" };
+  $$("[data-rm]").forEach(b => b.onclick = async () => { const [a,i] = b.dataset.rm.split(":"); const it = p[a][+i] || {}; const empty = !Object.values(it).some(v => Array.isArray(v) ? v.length : (v !== null && v !== "" && v !== false && v !== undefined && v !== 0));
+    if (!empty && !(await ask(`Xóa ${RM_LABEL[a]||"mục"} này?`, "Website chỉ thay đổi sau khi bạn bấm Lưu.", "Xóa", true))) return; p[a].splice(+i,1); viewEditor(true); });
   const mv = (a,i,d) => { const x = p[a]; [x[i], x[i+d]] = [x[i+d], x[i]]; viewEditor(true); };
   $$("[data-up]").forEach(b => b.onclick = () => { const [a,i] = b.dataset.up.split(":"); mv(a,+i,-1); });
   $$("[data-down]").forEach(b => b.onclick = () => { const [a,i] = b.dataset.down.split(":"); mv(a,+i,1); });
@@ -411,7 +413,7 @@ function bindEditor(p){
   ["dragleave","drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
   drop.addEventListener("drop", e => addImages(p, [...e.dataTransfer.files]));
   $$("[data-imv]").forEach(b => b.onclick = () => { const [i,d] = b.dataset.imv.split(":").map(Number); const x = p.images; [x[i], x[i+d]] = [x[i+d], x[i]]; viewEditor(true); });
-  $$("[data-idel]").forEach(b => b.onclick = () => { const im = p.images.splice(+b.dataset.idel,1)[0]; if (A.uploads[im.src] && !A.uploads[im.src].committed) delete A.uploads[im.src]; else if (/^uploads\//.test(im.src)) A.deletes.add(im.src); viewEditor(true); });
+  $$("[data-idel]").forEach(b => b.onclick = async () => { if (!(await ask("Xóa ảnh này?", "Ảnh sẽ bị gỡ khỏi trang sản phẩm sau khi bạn bấm Lưu.", "Xóa ảnh", true))) return; const im = p.images.splice(+b.dataset.idel,1)[0]; if (A.uploads[im.src] && !A.uploads[im.src].committed) delete A.uploads[im.src]; else if (/^uploads\//.test(im.src)) A.deletes.add(im.src); viewEditor(true); });
 }
 document.addEventListener("paste", e => {
   if (A.view !== "edit") return; const p = A.products[A.editId]; if (!p) return;
@@ -477,7 +479,7 @@ function viewSettings(){
     <section class="box"><h2>Trang chủ</h2>
       ${f("slogan","Dòng giới thiệu nhỏ")}
       ${f("heroTitle","Tiêu đề lớn")}
-      ${f("heroHighlight","Cụm từ tô vàng trong tiêu đề","","text","Phải trùng đúng một cụm trong tiêu đề lớn")}
+      ${f("heroHighlight","Cụm từ tô màu trong tiêu đề","","text","Phải trùng đúng một cụm trong tiêu đề lớn")}
       <label class="field"><span>Đoạn giới thiệu</span><textarea data-s="heroText" rows="3">${esc(s.heroText||"")}</textarea></label>
     </section>
     <section class="box"><h2>Cam kết hiển thị</h2>

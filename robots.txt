@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /quan-tri.html
+
+Sitemap: https://dahotech.onrender.com/sitemap.xml
