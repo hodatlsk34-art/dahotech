@@ -48,7 +48,7 @@ const I = {
   win: sv('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/>'),
   x: sv('<path d="M6 6l12 12M18 6 6 18"/>')
 };
-const logo = `<span class="brand-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5v14M17 5v14M7 12h10"/></svg></span>`;
+const logo = `<img class="brand-logo" src="assets/img/logo.webp" width="880" height="150" alt="" decoding="async">`;
 function catStyle(name){
   const n = norm(name);
   if (/\bai\b|tri tue/.test(n)) return { icon:I.spark, c:"#7C3AED", bg:"#F3E8FF", d:"Ứng dụng trí tuệ nhân tạo vào công việc hằng ngày", need:"Muốn dùng AI nhưng chưa biết đưa vào công việc thế nào." };
@@ -137,7 +137,7 @@ function shell(){
   const s = S.site, cats = usedCats();
   const catLinks = `<a href="#san-pham" data-setcat="">Tất cả sản phẩm <span>${visible().length}</span></a>` + cats.map(c => `<a href="#san-pham" data-setcat="${esc(c)}">${esc(c)} <span>${visible().filter(p=>p.category===c).length}</span></a>`).join("");
   $("#top").innerHTML = `<div class="wrap">
-    <a class="brand" href="#" aria-label="${esc(s.name)} – Trang chủ">${logo}<b>${esc(s.name)}</b></a>
+    <a class="brand" href="#" aria-label="${esc(s.name)} – Trang chủ">${logo}</a>
     <nav class="nav" aria-label="Điều hướng chính">
       <a href="#" data-nav="home">Trang chủ</a>
       <div class="dd"><button type="button" data-nav="san-pham" aria-expanded="false" aria-haspopup="true">Sản phẩm ${I.chev}</button><div class="dd-menu">${catLinks}</div></div>
@@ -151,7 +151,7 @@ function shell(){
       <button type="button" class="iconbtn menu-btn" id="mBtn" aria-label="Mở menu" aria-expanded="false">${I.menu}</button>
     </div></div>`;
   $("#drawer").innerHTML = `<div class="scrim" data-close-drawer></div><nav aria-label="Menu">
-    <div class="dhead"><a class="brand" href="#">${logo}<b>${esc(s.name)}</b></a><button type="button" class="iconbtn" data-close-drawer aria-label="Đóng menu">${I.x}</button></div>
+    <div class="dhead"><a class="brand" href="#" aria-label="${esc(s.name)} – Trang chủ">${logo}</a><button type="button" class="iconbtn" data-close-drawer aria-label="Đóng menu">${I.x}</button></div>
     <a href="#">Trang chủ</a><a href="#san-pham" data-setcat="">Sản phẩm</a>
     ${cats.map(c => `<a class="sub" href="#san-pham" data-setcat="${esc(c)}">${esc(c)} <span>${visible().filter(p=>p.category===c).length}</span></a>`).join("")}
     <a href="#giai-phap">Giải pháp</a><a href="#dat-lam">Đặt làm riêng</a><a href="#cach-mua">Cách mua</a><a href="#lien-he">Liên hệ</a>
@@ -169,7 +169,7 @@ function shell(){
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
   $("#foot").innerHTML = `<div class="wrap">
-    <div class="f-brand"><a class="brand" href="#">${logo}<b>${esc(s.name)}</b></a>
+    <div class="f-brand"><a class="brand" href="#" aria-label="${esc(s.name)} – Trang chủ">${logo}</a>
       ${s.slogan ? `<p class="about"><b>${esc(s.slogan)}</b></p>` : ""}
       <p class="about">Phần mềm, Web App và công cụ số do ${esc(s.name)} nghiên cứu, phát triển cho cá nhân, tổ chức và doanh nghiệp.</p>
       ${s.badgeHtml ? `<div style="margin-top:14px">${s.badgeHtml}</div>` : ""}</div>

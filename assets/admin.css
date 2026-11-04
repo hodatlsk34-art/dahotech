@@ -50,7 +50,7 @@ a{color:var(--accent)}
 .login-card{width:min(520px,100%);background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;gap:16px}
 .login-card h1{font-size:1.6rem;font-weight:700}
 .logo{display:flex;align-items:center;gap:10px}
-.logo span{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#2563EB,#3B82F6 55%,#06B6D4);display:grid;place-items:center}
+.logo img{width:34px;height:34px;border-radius:8px;display:block}
 details.help{background:var(--surface-2);border-radius:10px;padding:10px 14px;font-size:.88rem}
 details.help summary{cursor:pointer;font-weight:600}
 details.help ol{padding-left:20px;margin:8px 0 0}

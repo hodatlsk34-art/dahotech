@@ -128,7 +128,7 @@ function loadCfg(){
 function viewLogin(err){
   const c = loadCfg() || {};
   app.innerHTML = `<div class="wrap login"><form class="login-card" id="lf" autocomplete="off">
-    <div class="logo"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M8 7 3 12l5 5M16 7l5 5-5 5"/></svg></span><b class="muted">Quản trị cửa hàng</b></div>
+    <div class="logo"><img src="assets/img/logo-mark.png" width="34" height="34" alt=""><b class="muted">Quản trị cửa hàng</b></div>
     <h1>Kết nối kho dữ liệu</h1>
     <p class="muted" style="margin:0">Sản phẩm được lưu trong kho GitHub của bạn. Mỗi lần bấm Lưu, Render tự cập nhật website sau khoảng 1–2 phút.</p>
     ${err ? `<div class="err">${esc(err)}</div>` : ""}
@@ -180,7 +180,7 @@ function render(){
   const pending = isDirty();
   app.innerHTML = `
   <header class="bar"><div class="wrap">
-    <div class="logo"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M8 7 3 12l5 5M16 7l5 5-5 5"/></svg></span><b>${esc(A.site.name)}</b></div>
+    <div class="logo"><img src="assets/img/logo-mark.png" width="34" height="34" alt=""><b>${esc(A.site.name)}</b></div>
     <nav class="tabsnav"><button data-go="list" aria-current="${A.view!=="settings"?"page":"false"}">Sản phẩm</button><button data-go="settings" aria-current="${A.view==="settings"?"page":"false"}">Cài đặt cửa hàng</button></nav>
     <div class="right">
       <span class="pill ${A.mode==="github"?"ok":"warn"}" title="${esc(A.cfg.repo)}">${A.mode==="github" ? "Đã kết nối " + esc(A.cfg.repo) : "Chế độ xem thử"}</span>

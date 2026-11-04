@@ -70,7 +70,11 @@ p{margin:0}
 .top .wrap{display:flex;align-items:center;gap:20px;height:72px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--heading);flex:none}
 .brand-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--primary),#3B82F6 55%,var(--secondary));display:grid;place-items:center;box-shadow:0 8px 18px -8px rgba(37,99,235,.8)}
-.brand b{font-size:1.28rem;font-weight:700;letter-spacing:-.02em}
+.brand-logo{display:block;height:40px;width:auto}
+.drawer .brand-logo{height:36px}
+footer .brand{display:inline-flex;background:#fff;border-radius:12px;padding:8px 14px}
+footer .brand-logo{height:36px}
+@media (max-width:480px){.brand-logo{height:34px}}
 .nav{display:flex;align-items:center;gap:2px;margin:0 auto}
 .nav>a,.nav .dd>button{position:relative;display:inline-flex;align-items:center;gap:4px;height:72px;padding:0 14px;color:var(--heading);text-decoration:none;font-weight:500;font-size:.95rem;background:none;border:0;font-family:inherit;cursor:pointer}
 .nav>a:hover,.nav .dd>button:hover{color:var(--primary)}
