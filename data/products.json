@@ -1,46 +1,505 @@
 [
   {
-    "id": "san-pham",
+    "id": "tram-duyet-de",
     "example": false,
-    "published": false,
-    "featured": false,
-    "name": "",
+    "published": true,
+    "featured": true,
+    "name": "Trạm Duyệt Đề",
     "category": "Giáo dục",
     "platforms": [
       "Web"
     ],
     "status": "live",
-    "version": "1.0",
+    "version": "2.7",
     "updated": "2026-11-04",
-    "tint": "#3434c9",
-    "tagline": "",
-    "highlights": [],
-    "description": "",
-    "images": [],
+    "tint": "#1D4ED8",
+    "tagline": "Kiểm tra lỗi đề kiểm tra theo cấu trúc 3 phần GDPT 2018, đối chiếu ma trận, trộn mã đề và xuất sang vnEdu ngay trên trình duyệt.",
+    "highlights": [
+      "Đề không bị tải lên máy chủ: mọi xử lý chạy ngay trên máy của bạn",
+      "Phát hiện lỗi cấu trúc, thiếu đáp án, câu trùng trước khi in đề",
+      "Trộn mã đề xong tự đọc lại từng mã để kiểm tra độc lập"
+    ],
+    "description": "Trạm Duyệt Đề giúp giáo viên và tổ chuyên môn kiểm tra một đề kiểm tra trước khi in hoặc đưa lên hệ thống. Bạn chỉ cần kéo thả file Word, phần mềm đọc toàn bộ đề, chỉ ra từng lỗi kèm vị trí câu và cách sửa.\n\nPhần mềm làm theo cấu trúc đề 3 phần của Chương trình GDPT 2018:\n- Phần I: trắc nghiệm nhiều lựa chọn\n- Phần II: trắc nghiệm Đúng/Sai\n- Phần III: trả lời ngắn\n\nToàn bộ việc đọc và kiểm tra diễn ra trong trình duyệt, đề thi không rời khỏi máy tính của bạn. Đề đang mở được giữ lại khi tải lại trang, và có nút xóa sạch dữ liệu khi dùng xong.",
+    "images": [
+      {
+        "src": "uploads/tram-duyet-de/01.webp",
+        "caption": "Kiểm định đề: tóm tắt số câu từng phần, danh sách lỗi và cảnh báo theo từng câu"
+      },
+      {
+        "src": "uploads/tram-duyet-de/02.webp",
+        "caption": "Đối chiếu ma trận: so số câu theo chủ đề và mức độ Biết / Hiểu / Vận dụng"
+      },
+      {
+        "src": "uploads/tram-duyet-de/03.webp",
+        "caption": "Trộn mã đề: cổng kiểm định chặn phát hành khi đề gốc còn lỗi, kiểm tra lại từng mã"
+      },
+      {
+        "src": "uploads/tram-duyet-de/04.webp",
+        "caption": "Chuyển đổi LMS: đọc file câu hỏi và xuất theo mẫu vnEdu, có hướng dẫn soạn file"
+      },
+      {
+        "src": "uploads/tram-duyet-de/05.webp",
+        "caption": "Tổng quan: số đề đã kiểm định, tỷ lệ đạt chuẩn, hoạt động gần đây"
+      }
+    ],
     "video": "",
-    "demo": "",
-    "features": [],
+    "demo": "https://tram-duyet-de.onrender.com",
+    "features": [
+      {
+        "title": "Kiểm định đề Word và PDF",
+        "text": "Soi lỗi cấu trúc, đánh số câu, ký hiệu, danh pháp, câu trùng lặp; đọc được phương án nằm trong bảng và bảng lồng nhau."
+      },
+      {
+        "title": "Rà soát đáp án",
+        "text": "Nhận ra đáp án qua gạch chân, in đậm, màu chữ, tô nền hoặc bảng đáp án cuối đề; câu nào chưa rõ thì đánh dấu để giáo viên xác nhận."
+      },
+      {
+        "title": "Đọc mọi kiểu bảng Đúng/Sai",
+        "text": "Bảng 'Câu | a | b | c | d', nhiều khối cạnh nhau, ô gộp, chuỗi 'ĐSĐS' đều đọc được, không cần soạn theo mẫu cố định."
+      },
+      {
+        "title": "Đối chiếu ma trận",
+        "text": "Đọc ma trận Excel hoặc Word, so số câu, điểm, tỉ trọng theo chủ đề và mức độ; chỉ ra câu gây chênh lệch."
+      },
+      {
+        "title": "Công thức và hình",
+        "text": "Chuyển công thức MathType sang LaTeX và hiển thị rõ ràng; giữ nguyên hình trong đề."
+      },
+      {
+        "title": "Trộn mã đề có kiểm soát",
+        "text": "Đảo câu, đảo phương án, ánh xạ đáp án theo câu gốc; đề còn lỗi nghiêm trọng thì không cho phát hành."
+      },
+      {
+        "title": "Nạp file đáp án riêng",
+        "text": "Nhận đáp án từ Word, Excel, CSV, PDF có chữ hoặc TXT; hỗ trợ nhiều mã đề, xem trước trước khi áp dụng."
+      },
+      {
+        "title": "Chuyển đổi sang vnEdu",
+        "text": "Xuất theo 6 mẫu nhập câu hỏi (4 mẫu Word, 2 mẫu Excel); mỗi file xuất ra được đọc lại để đối chiếu."
+      }
+    ],
     "plans": [
       {
         "name": "Dùng thử",
         "price": 0,
         "unit": "",
-        "audience": "",
-        "items": [],
+        "audience": "Mở web và thử ngay với đề của bạn",
+        "items": [
+          "Đủ chức năng kiểm định, ma trận, trộn đề",
+          "Không cần cài đặt"
+        ],
         "highlight": false
       },
       {
-        "name": "Đơn vị",
+        "name": "Giáo viên",
         "price": null,
         "unit": "/năm",
-        "audience": "",
-        "items": [],
+        "audience": "Một giáo viên dùng thường xuyên",
+        "items": [
+          "Cập nhật tính năng trong năm",
+          "Hỗ trợ qua Zalo"
+        ],
+        "highlight": false
+      },
+      {
+        "name": "Tổ chuyên môn / Trường",
+        "price": null,
+        "unit": "/năm",
+        "audience": "Dùng chung cho tổ hoặc toàn trường",
+        "items": [
+          "Hướng dẫn sử dụng cho tổ",
+          "Ưu tiên thêm mẫu xuất theo yêu cầu",
+          "Hỗ trợ trong giờ hành chính"
+        ],
         "highlight": true
       }
     ],
-    "requirements": [],
-    "faq": [],
-    "changelog": [],
+    "requirements": [
+      {
+        "label": "Trình duyệt",
+        "value": "Chrome hoặc Edge bản mới trên máy tính"
+      },
+      {
+        "label": "File đề",
+        "value": "Word .docx (khuyến nghị) hoặc PDF có chữ chọn được"
+      },
+      {
+        "label": "File ma trận",
+        "value": "Excel .xlsx, .xls, .csv hoặc Word .docx"
+      },
+      {
+        "label": "Cấu trúc đề",
+        "value": "Đề 3 phần theo GDPT 2018; tùy chỉnh được ở mục Cài đặt cấu trúc đề"
+      },
+      {
+        "label": "Nơi lưu dữ liệu",
+        "value": "Trong trình duyệt của máy đang dùng; xóa được bằng một nút"
+      },
+      {
+        "label": "Kết nối mạng",
+        "value": "Chỉ cần khi mở trang; xử lý đề không gửi dữ liệu đi"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Đề thi có bị gửi lên mạng không?",
+        "a": "Không. File đề được đọc và kiểm tra ngay trong trình duyệt của bạn, không tải lên máy chủ nào."
+      },
+      {
+        "q": "Đề có công thức Toán, Lý, Hóa thì sao?",
+        "a": "Công thức MathType được chuyển sang LaTeX và hiển thị đúng khi xem trước; hình trong đề được giữ nguyên."
+      },
+      {
+        "q": "Có dùng cho mọi môn không?",
+        "a": "Kiểm định đề dùng được cho các môn có đề 3 phần. Ma trận riêng cho Ngữ văn, Tiếng Anh và đọc PDF ảnh quét (scan) đang được phát triển."
+      },
+      {
+        "q": "Mục AI thẩm định đã dùng được chưa?",
+        "a": "Chưa. Mục này đang phát triển; hiện chỉ có kiểm tra câu trùng lặp chạy trên máy."
+      },
+      {
+        "q": "Hỗ trợ những hệ thống LMS nào?",
+        "a": "vnEdu theo 6 mẫu nhập câu hỏi chính thức. Viettel Study, K12Online hoặc mẫu riêng có thể bổ sung theo yêu cầu."
+      }
+    ],
+    "changelog": [
+      {
+        "version": "2.7",
+        "date": "2026-11-03",
+        "text": "Đọc bảng đáp án Đúng/Sai ở mọi bố cục; giữ đề đang mở khi tải lại trang; nút xóa dữ liệu đã lưu."
+      },
+      {
+        "version": "2.6",
+        "date": "",
+        "text": "Đối chiếu ma trận linh hoạt: chủ đề hai cấp, loại cột Tổng, tự phân loại câu theo đặc tả."
+      },
+      {
+        "version": "2.5",
+        "date": "",
+        "text": "Nạp file đáp án riêng (Word, Excel, CSV, PDF, TXT), hỗ trợ nhiều mã đề."
+      }
+    ],
+    "rightsConfirmed": false,
+    "cleanConfirmed": false
+  },
+  {
+    "id": "cham-phieu",
+    "example": false,
+    "published": true,
+    "featured": false,
+    "name": "Chấm Phiếu Trắc Nghiệm",
+    "category": "Giáo dục",
+    "platforms": [
+      "Web",
+      "Điện thoại"
+    ],
+    "status": "live",
+    "version": "2.6",
+    "updated": "2026-10-19",
+    "tint": "#2563EB",
+    "tagline": "Chấm phiếu trắc nghiệm mẫu THPT 2025 từ ảnh scan, ảnh chụp, PDF hoặc camera điện thoại; soát bài, thống kê và xuất bảng điểm.",
+    "highlights": [
+      "Ảnh bài thi và dữ liệu học sinh không rời khỏi máy chấm",
+      "Phiếu nghi ngờ luôn được khoanh đúng ô để người soát xử lý",
+      "Xuất bảng điểm Excel và phiếu báo điểm theo từng lớp"
+    ],
+    "description": "Chấm Phiếu Trắc Nghiệm là phần mềm chấm phiếu tô (OMR) chạy hoàn toàn trên trình duyệt, không cần cài đặt và không có máy chủ xử lý ảnh. Giáo viên tải ảnh scan hoặc chụp phiếu bằng điện thoại, phần mềm đọc số báo danh, mã đề, đáp án và tính điểm theo thang điểm mới.\n\nĐiểm khác biệt là **không âm thầm chấp nhận phiếu có vấn đề**: câu tô nhiều ô, tô nhạt, nghi vết tẩy, sai số báo danh… đều được đánh dấu đúng vị trí trên ảnh để người soát xác nhận. Kết quả chỉ được chốt khi không còn phiếu cần soát.\n\nPhần mềm đã được hiệu chỉnh trên 619 phiếu Toán thật (scan 200 dpi). Với 480 ảnh phiếu bị gấp, rách hoặc mất một góc bất kỳ, kết quả đọc khớp hoàn toàn với phiếu nguyên.",
+    "images": [
+      {
+        "src": "uploads/cham-phieu/01.webp",
+        "caption": "Trang chủ: số bài đã chấm, bài cần soát, thống kê điểm và lối tắt công việc"
+      },
+      {
+        "src": "uploads/cham-phieu/02.webp",
+        "caption": "Soát bài: ảnh phiếu đã nắn thẳng, vùng nhận dạng và danh sách cảnh báo của từng phiếu"
+      },
+      {
+        "src": "uploads/cham-phieu/03.webp",
+        "caption": "Kết quả: phổ điểm, xếp loại, xuất Excel, PDF, phiếu báo điểm và chốt kết quả"
+      },
+      {
+        "src": "uploads/cham-phieu/04.webp",
+        "caption": "Mẫu phiếu: THPT 2025, Đánh giá năng lực 120 câu, phiếu linh hoạt; in phiếu theo danh sách"
+      },
+      {
+        "src": "uploads/cham-phieu/05.webp",
+        "caption": "Chấm bài: kéo thả ảnh, PDF, thư mục hoặc chấm bằng camera; chọn mức độ nhận dạng"
+      },
+      {
+        "src": "uploads/cham-phieu/06.webp",
+        "caption": "Phân tích câu hỏi: độ khó, độ phân cách và nhận xét từng câu"
+      }
+    ],
+    "video": "",
+    "demo": "https://cham-phieu-trac-nghiem.onrender.com/",
+    "features": [
+      {
+        "title": "3 mẫu phiếu, in theo danh sách",
+        "text": "Phiếu THPT 2025 (40 + 8 + 6), Đánh giá năng lực 120 câu, phiếu linh hoạt; in sẵn họ tên, lớp, số báo danh."
+      },
+      {
+        "title": "Chấm hàng loạt",
+        "text": "Kéo thả nhiều ảnh, PDF nhiều trang, cả thư mục hoặc tệp .zip; tự bỏ qua tệp đã chấm."
+      },
+      {
+        "title": "Chấm bằng camera điện thoại",
+        "text": "Đưa phiếu vào khung, phần mềm tự chụp khi phiếu rõ nét và báo điểm ngay."
+      },
+      {
+        "title": "Tự động soát, soát bài có kiểm soát",
+        "text": "Máy tự xử lý trường hợp chắc chắn; trường hợp nghi ngờ được khoanh đúng ô, sửa phải ghi lý do."
+      },
+      {
+        "title": "Đợt thi nhiều môn",
+        "text": "Tạo một lần cho nhiều khối và môn, bảng Khối × Môn theo dõi tiến độ, tổng hợp điểm cả đợt."
+      },
+      {
+        "title": "Thang điểm 2025 và tự luận",
+        "text": "Thang Đúng/Sai theo số ý, điểm riêng từng câu, cộng điểm tự luận; xử lý câu lỗi đề, câu nhiều đáp án."
+      },
+      {
+        "title": "Báo cáo chuyên môn",
+        "text": "Phổ điểm, xếp loại theo lớp, độ khó, độ phân cách, câu sai nhiều nhất kèm danh sách học sinh."
+      },
+      {
+        "title": "Quản trị và an toàn dữ liệu",
+        "text": "4 vai trò người dùng, nhật ký thao tác, chốt kết quả, sao lưu và phục hồi tệp .zip."
+      }
+    ],
+    "plans": [
+      {
+        "name": "Dùng thử",
+        "price": 0,
+        "unit": "",
+        "audience": "Thử trên một kỳ kiểm tra thật",
+        "items": [
+          "Đủ tính năng trong 14 ngày",
+          "Hết hạn vẫn giữ dữ liệu",
+          "Hướng dẫn qua Zalo"
+        ],
+        "highlight": false
+      },
+      {
+        "name": "Trường học",
+        "price": null,
+        "unit": "/năm",
+        "audience": "Toàn trường, không giới hạn số phiếu",
+        "items": [
+          "Không giới hạn số máy chấm",
+          "Cập nhật bộ nhận dạng trong năm",
+          "Hỗ trợ trong giờ hành chính"
+        ],
+        "highlight": true
+      },
+      {
+        "name": "Theo đợt thi",
+        "price": null,
+        "unit": "/đợt",
+        "audience": "Trung tâm, kỳ thi thử",
+        "items": [
+          "Một đợt thi nhiều môn",
+          "Hỗ trợ trong ngày chấm"
+        ],
+        "highlight": false
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Trình duyệt",
+        "value": "Chrome hoặc Edge bản mới, trên máy tính hoặc điện thoại"
+      },
+      {
+        "label": "Nguồn ảnh",
+        "value": "Máy scan (khuyến nghị 200 dpi) hoặc camera điện thoại"
+      },
+      {
+        "label": "Định dạng",
+        "value": "JPG, PNG, PDF nhiều trang, tệp .zip chứa ảnh"
+      },
+      {
+        "label": "Nơi lưu dữ liệu",
+        "value": "Trong trình duyệt của máy chấm; nên sao lưu .zip định kỳ"
+      },
+      {
+        "label": "Nhiều máy chấm",
+        "value": "Xuất / nhập gói kỳ thi để gộp kết quả (chưa đồng bộ trực tuyến)"
+      },
+      {
+        "label": "Cài đặt",
+        "value": "Không cần; mở trang web và kích hoạt bằng mã"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Ảnh bài thi có được gửi lên máy chủ không?",
+        "a": "Không. Ảnh, danh sách và điểm đều xử lý và lưu trong trình duyệt của máy chấm."
+      },
+      {
+        "q": "Bấm 'Mở bản demo' thì cần gì?",
+        "a": "Trang yêu cầu mã kích hoạt. Bấm 'Dùng thử 14 ngày' để nhận liên kết dùng thử, mở liên kết là dùng được ngay."
+      },
+      {
+        "q": "Phiếu bị gấp, rách góc có chấm được không?",
+        "a": "Được. Phiếu mất một góc bất kỳ vẫn đọc đúng; phiếu cong, lưới không khớp sẽ được báo đỏ để quét lại, không chấm sai âm thầm."
+      },
+      {
+        "q": "Hết hạn dùng thử thì sao?",
+        "a": "Phần mềm khóa thao tác nhưng vẫn giữ dữ liệu trên máy; nhập mã chính thức là dùng tiếp."
+      },
+      {
+        "q": "Có cần sao lưu không?",
+        "a": "Có. Dữ liệu nằm trong trình duyệt nên sẽ mất nếu xóa dữ liệu duyệt web hoặc đổi máy. Phần mềm nhắc sao lưu sau 7 ngày."
+      }
+    ],
+    "changelog": [
+      {
+        "version": "2.6",
+        "date": "2026-10-19",
+        "text": "Chấm được phiếu mất một góc bất kỳ; thống kê câu sai nhiều nhất; xử lý câu lỗi đề, câu nhiều đáp án; tự cập nhật phiên bản."
+      },
+      {
+        "version": "2.5",
+        "date": "2026-10-14",
+        "text": "Hiệu chỉnh trên 619 phiếu thật: phiếu không cần soát tăng từ 336 lên 563; thêm cảnh báo nghi vết tẩy."
+      },
+      {
+        "version": "2.3",
+        "date": "2026-10-13",
+        "text": "Thiếu một ô mốc góc vẫn chấm được; đo đúng trong ô tròn, không đọc ô trống thành có tô."
+      }
+    ],
+    "rightsConfirmed": false,
+    "cleanConfirmed": false
+  },
+  {
+    "id": "wincare",
+    "example": false,
+    "published": true,
+    "featured": false,
+    "name": "WinCare",
+    "category": "Tiện ích",
+    "platforms": [
+      "Windows"
+    ],
+    "status": "beta",
+    "version": "0.5",
+    "updated": "2026-10-08",
+    "tint": "#0F766E",
+    "tagline": "Chăm sóc máy tính Windows an toàn: dọn rác, sắp xếp tệp có sao lưu và hoàn tác, kiểm tra ổ cứng, RAM và sửa lỗi thường gặp.",
+    "highlights": [
+      "Mọi thao tác đều hiện trước, xác nhận rồi mới làm, có đường hoàn tác",
+      "Không thu thập dữ liệu, không gửi tên tệp ra ngoài",
+      "Không có tính năng 'tăng tốc' giả gây hại máy"
+    ],
+    "description": "WinCare là phần mềm chăm sóc máy tính Windows dành cho người dùng văn phòng, không cần rành kỹ thuật. Giao diện tiếng Việt, câu chữ dễ hiểu, luôn nói rõ máy sắp làm gì trước khi làm.\n\nNguyên tắc của WinCare là **an toàn trước, hiệu quả sau**: sắp xếp tệp luôn sao lưu và kiểm tra lại trước khi di chuyển, không bao giờ xóa tệp; tệp trùng chỉ chuyển vào Thùng rác; lỗi phần cứng ổ đĩa thì hướng dẫn cứu dữ liệu chứ không giả vờ sửa được.\n\n**Đây là bản thử nghiệm.** Phần mềm đã qua 62 bài kiểm thử tự động nhưng chưa được kiểm chứng đầy đủ trên máy Windows thật, và bộ cài chưa có chữ ký số nên Windows sẽ hiện cảnh báo khi cài. Bản thử nghiệm được cung cấp miễn phí để nhận góp ý.",
+    "images": [],
+    "video": "",
+    "demo": "",
+    "features": [
+      {
+        "title": "Tổng quan sức khỏe máy",
+        "text": "CPU, RAM, ổ đĩa, mạng và điểm sức khỏe; giải thích rõ từng khoản bị trừ điểm."
+      },
+      {
+        "title": "Sắp xếp tệp khoa học",
+        "text": "4 cách: theo loại tệp, theo đơn vị – năm, theo dự án (PARA), theo ngày; xem trước, sao lưu, hoàn tác một bấm."
+      },
+      {
+        "title": "Phân tích ổ đĩa",
+        "text": "Thư mục và tệp chiếm nhiều dung lượng; tìm tệp trùng bằng mã SHA-256, chỉ chuyển bản thừa vào Thùng rác."
+      },
+      {
+        "title": "Dọn rác an toàn",
+        "text": "Tệp tạm, cache, log, bản cập nhật Windows đã tải; WinSxS chỉ dọn bằng công cụ chính thức DISM."
+      },
+      {
+        "title": "Khởi động và dịch vụ",
+        "text": "Bật / tắt ứng dụng chạy cùng Windows, dịch vụ không thuộc lõi hệ thống; khôi phục được về ban đầu."
+      },
+      {
+        "title": "Sửa lỗi Windows",
+        "text": "Làm mới DNS, đặt lại mạng, sửa Windows Update, SFC, DISM, Taskbar, Start Menu; hiện rõ lệnh sẽ chạy."
+      },
+      {
+        "title": "Sức khỏe ổ cứng",
+        "text": "Phát hiện ổ sắp hỏng qua SMART và nhật ký hệ thống; sao lưu khẩn cấp dữ liệu quan trọng sang ổ khác."
+      },
+      {
+        "title": "Chẩn đoán RAM",
+        "text": "Tìm nguyên nhân máy đầy RAM, ứng dụng nghi rò rỉ, gợi ý nâng cấp; không có nút 'dọn RAM' giả."
+      }
+    ],
+    "plans": [
+      {
+        "name": "Tham gia thử nghiệm",
+        "price": 0,
+        "unit": "",
+        "audience": "Dùng miễn phí, góp ý lỗi để hoàn thiện",
+        "items": [
+          "Bản thử nghiệm mới nhất",
+          "Hướng dẫn cài đặt qua Zalo"
+        ],
+        "highlight": true
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Hệ điều hành",
+        "value": "Windows 10 hoặc 11, 64-bit"
+      },
+      {
+        "label": "Dung lượng",
+        "value": "Bộ cài khoảng 78 MB; khoảng 270 MB sau khi cài"
+      },
+      {
+        "label": "Quyền cài đặt",
+        "value": "Không cần quyền quản trị; một số thao tác sửa lỗi sẽ hỏi quyền (UAC)"
+      },
+      {
+        "label": "Chữ ký số",
+        "value": "Chưa có; Windows SmartScreen sẽ cảnh báo 'nhà phát hành không xác định'"
+      }
+    ],
+    "faq": [
+      {
+        "q": "WinCare có xóa nhầm tệp của tôi không?",
+        "a": "Sắp xếp tệp không bao giờ xóa tệp, luôn sao lưu và kiểm tra bằng SHA-256 trước khi di chuyển. Tệp trùng chỉ chuyển vào Thùng rác."
+      },
+      {
+        "q": "Vì sao không có nút 'dọn RAM' hay 'dọn registry'?",
+        "a": "Các tính năng này chỉ làm số liệu đẹp tạm thời, thường làm máy chậm hơn hoặc gây lỗi. WinCare chẩn đoán nguyên nhân thật và gợi ý cách xử lý."
+      },
+      {
+        "q": "Vì sao Windows cảnh báo khi cài?",
+        "a": "Bộ cài chưa có chữ ký số. Đây là bản thử nghiệm; bản chính thức sẽ được ký số."
+      },
+      {
+        "q": "Đã dùng ổn định trên máy thật chưa?",
+        "a": "Chưa kiểm chứng đầy đủ. Nên dùng thử trên máy không chứa dữ liệu quan trọng chưa sao lưu và báo lại lỗi gặp phải."
+      }
+    ],
+    "changelog": [
+      {
+        "version": "0.5",
+        "date": "",
+        "text": "Thêm mục Bộ nhớ RAM: chẩn đoán nguyên nhân, đóng ứng dụng an toàn, gợi ý nâng cấp."
+      },
+      {
+        "version": "0.4",
+        "date": "",
+        "text": "Thêm Sức khỏe ổ cứng và sao lưu khẩn cấp."
+      },
+      {
+        "version": "0.3",
+        "date": "",
+        "text": "Đổi tên thành WinCare, giao diện Tổng quan mới, giao diện sáng / tối."
+      },
+      {
+        "version": "0.2",
+        "date": "2026-10-08",
+        "text": "Bản cài đặt đầu tiên; sắp xếp tệp chịu được mất điện giữa chừng, bỏ qua tệp đang mở và tệp OneDrive."
+      }
+    ],
     "rightsConfirmed": false,
     "cleanConfirmed": false
   }
