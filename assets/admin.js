@@ -50,7 +50,7 @@ function fromPrice(p){
   const paid = v.filter(x => isNum(x) && Number(x) > 0).map(Number);
   if (v.every(x => isNum(x) && Number(x) === 0)) return "Miễn phí";
   if (paid.length) return "Từ " + vnd(Math.min(...paid));
-  return v.some(x => isNum(x) && Number(x) === 0) ? "Dùng thử miễn phí" : "Liên hệ báo giá";
+  return v.some(x => isNum(x) && Number(x) === 0) ? "Dùng thử miễn phí" : "Liên hệ dùng thử";
 }
 function thumbHTML(p){
   if (p.images && p.images.length) return `<img class="thumb" src="${esc(imgSrc(p.images[0].src))}" alt="">`;

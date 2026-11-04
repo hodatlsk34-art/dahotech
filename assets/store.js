@@ -94,11 +94,11 @@ function md(text){
 const planPrice = pl => !isNum(pl.price) ? "Liên hệ" : (Number(pl.price) === 0 ? "Miễn phí" : vnd(pl.price));
 function fromPrice(p){
   const v = (p.plans||[]).map(x => x.price);
-  if (!v.length) return "Liên hệ báo giá";
+  if (!v.length) return "Liên hệ dùng thử";
   const paid = v.filter(x => isNum(x) && Number(x) > 0).map(Number);
   if (v.every(x => isNum(x) && Number(x) === 0)) return "Miễn phí";
   if (paid.length) return "Từ " + vnd(Math.min(...paid));
-  return v.some(x => !isNum(x)) ? "Liên hệ báo giá" : "Miễn phí";
+  return v.some(x => !isNum(x)) ? "Liên hệ dùng thử" : "Miễn phí";
 }
 const priceClass = p => { const t = fromPrice(p); return /^Từ/.test(t) ? "" : (/Miễn phí/.test(t) ? "free" : "ask"); };
 const minPaid = p => { const v = (p.plans||[]).map(x=>x.price).filter(x => isNum(x) && Number(x) > 0).map(Number); return v.length ? Math.min(...v) : Infinity; };
@@ -287,7 +287,7 @@ function solutionsHTML(limit){
 }
 
 /* ---------- catalog ---------- */
-const PRICE = [["all","Tất cả mức giá"],["free","Có bản miễn phí"],["lt500","Dưới 500.000đ"],["500-2m","500.000đ – 2.000.000đ"],["gt2m","Trên 2.000.000đ"],["ask","Liên hệ báo giá"]];
+const PRICE = [["all","Tất cả mức giá"],["free","Có bản miễn phí"],["lt500","Dưới 500.000đ"],["500-2m","500.000đ – 2.000.000đ"],["gt2m","Trên 2.000.000đ"],["ask","Liên hệ dùng thử"]];
 const SORT = [["noi-bat","Nổi bật"],["moi","Mới cập nhật"],["gia-tang","Giá thấp đến cao"],["gia-giam","Giá cao đến thấp"],["ten","Tên A – Z"]];
 function priceMatch(p, k){
   const m = minPaid(p);
