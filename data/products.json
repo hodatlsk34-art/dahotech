@@ -185,7 +185,7 @@
   {
     "id": "cham-phieu",
     "example": false,
-    "published": true,
+    "published": false,
     "featured": false,
     "name": "Chấm Phiếu Trắc Nghiệm",
     "category": "Giáo dục",
@@ -368,8 +368,8 @@
         "text": "Thiếu một ô mốc góc vẫn chấm được; đo đúng trong ô tròn, không đọc ô trống thành có tô."
       }
     ],
-    "rightsConfirmed": false,
-    "cleanConfirmed": false
+    "rightsConfirmed": true,
+    "cleanConfirmed": true
   },
   {
     "id": "wincare",
@@ -464,7 +464,7 @@
           "Đầy đủ tất cả tính năng",
           "Cập nhật phiên bản mới miễn phí",
           "Không quảng cáo, không thu thập dữ liệu",
-          "Hỗ trợ cài đặt qua Zalo khi cần"
+          "Hướng dẫn cài đặt qua Zalo"
         ],
         "highlight": true
       }
@@ -476,7 +476,7 @@
       },
       {
         "label": "Dung lượng",
-        "value": "Bộ cài 72 MB; khoảng 270 MB sau khi cài"
+        "value": "Bộ cài khoảng 78 MB; khoảng 270 MB sau khi cài"
       },
       {
         "label": "Quyền cài đặt",
@@ -512,7 +512,7 @@
     "changelog": [
       {
         "version": "0.5",
-        "date": "2026-10-28",
+        "date": "",
         "text": "Thêm mục Bộ nhớ RAM: chẩn đoán nguyên nhân, đóng ứng dụng an toàn, gợi ý nâng cấp."
       },
       {
@@ -532,9 +532,6 @@
       }
     ],
     "rightsConfirmed": true,
-    "cleanConfirmed": true,
-    "download": "downloads/WinCare-Setup-0.5.0.exe",
-    "downloadSize": "72 MB",
-    "downloadNote": "Bộ cài chưa có chữ ký số: nếu Windows hiện cảnh báo, bấm \"Thông tin thêm\" → \"Vẫn chạy\". Cần hỗ trợ cài đặt, nhắn Zalo."
+    "cleanConfirmed": true
   }
 ]
