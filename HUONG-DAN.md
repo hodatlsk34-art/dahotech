@@ -51,7 +51,7 @@ Mã chỉ ghi được vào đúng kho này. Không gửi cho người khác, kh
 - Chỉ đổi cách bán sang "Hiện mã QR thanh toán" sau khi có hộ kinh doanh và website được UBND tỉnh xác nhận thông báo.
 
 ## Triển khai hiện tại (04/11/2026)
-- Website: https://dahotech.onrender.com · Quản trị: https://dahotech.onrender.com/quan-tri.html
+- Website: https://hodatech.onrender.com · Quản trị: https://hodatech.onrender.com/quan-tri.html
 - Kho mã: https://github.com/hodatlsk34-art/dahotech (nhánh `main`, tự triển khai khi có commit)
 - Render Static Site `dahotech` (srv-dbl9vijm8hqs738lk5ig): https://dashboard.render.com/static/srv-dbl9vijm8hqs738lk5ig
 - Tạo bằng công cụ Render (không qua Blueprint) nên các header trong `render.yaml` chưa áp dụng; cửa hàng vẫn tải dữ liệu mới nhờ `fetch(..., {cache:"no-cache"})`.
