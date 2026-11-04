@@ -185,7 +185,7 @@
   {
     "id": "cham-phieu",
     "example": false,
-    "published": false,
+    "published": true,
     "featured": false,
     "name": "Chấm Phiếu Trắc Nghiệm",
     "category": "Giáo dục",
