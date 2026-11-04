@@ -383,15 +383,15 @@
     ],
     "status": "beta",
     "version": "0.5",
-    "updated": "2026-10-08",
+    "updated": "2026-11-04",
     "tint": "#0F766E",
     "tagline": "Chăm sóc máy tính Windows an toàn: dọn rác, sắp xếp tệp có sao lưu và hoàn tác, kiểm tra ổ cứng, RAM và sửa lỗi thường gặp.",
     "highlights": [
+      "Miễn phí hoàn toàn, cập nhật cũng miễn phí",
       "Mọi thao tác đều hiện trước, xác nhận rồi mới làm, có đường hoàn tác",
-      "Không thu thập dữ liệu, không gửi tên tệp ra ngoài",
-      "Không có tính năng 'tăng tốc' giả gây hại máy"
+      "Không thu thập dữ liệu, không gửi tên tệp ra ngoài"
     ],
-    "description": "WinCare là phần mềm chăm sóc máy tính Windows dành cho người dùng văn phòng, không cần rành kỹ thuật. Giao diện tiếng Việt, câu chữ dễ hiểu, luôn nói rõ máy sắp làm gì trước khi làm.\n\nNguyên tắc của WinCare là **an toàn trước, hiệu quả sau**: sắp xếp tệp luôn sao lưu và kiểm tra lại trước khi di chuyển, không bao giờ xóa tệp; tệp trùng chỉ chuyển vào Thùng rác; lỗi phần cứng ổ đĩa thì hướng dẫn cứu dữ liệu chứ không giả vờ sửa được.\n\n**Đây là bản thử nghiệm.** Phần mềm đã qua 62 bài kiểm thử tự động nhưng chưa được kiểm chứng đầy đủ trên máy Windows thật, và bộ cài chưa có chữ ký số nên Windows sẽ hiện cảnh báo khi cài. Bản thử nghiệm được cung cấp miễn phí để nhận góp ý.",
+    "description": "WinCare là phần mềm chăm sóc máy tính Windows dành cho người dùng văn phòng, không cần rành kỹ thuật. Giao diện tiếng Việt, câu chữ dễ hiểu, luôn nói rõ máy sắp làm gì trước khi làm.\n\nNguyên tắc của WinCare là **an toàn trước, hiệu quả sau**: sắp xếp tệp luôn sao lưu và kiểm tra lại trước khi di chuyển, không bao giờ xóa tệp; tệp trùng chỉ chuyển vào Thùng rác; lỗi phần cứng ổ đĩa thì hướng dẫn cứu dữ liệu chứ không giả vờ sửa được.\n\n**Đây là bản thử nghiệm.** Phần mềm đã qua 62 bài kiểm thử tự động nhưng chưa được kiểm chứng đầy đủ trên máy Windows thật, và bộ cài chưa có chữ ký số nên Windows sẽ hiện cảnh báo khi cài. \n\n**WinCare miễn phí hoàn toàn**: không có gói trả phí, không quảng cáo, các bản cập nhật về sau cũng miễn phí.",
     "images": [
       {
         "src": "uploads/wincare/01.webp",
@@ -456,12 +456,14 @@
     ],
     "plans": [
       {
-        "name": "Tham gia thử nghiệm",
+        "name": "Miễn phí",
         "price": 0,
         "unit": "",
-        "audience": "Dùng miễn phí, góp ý lỗi để hoàn thiện",
+        "audience": "Dùng đầy đủ mọi tính năng, không mất phí",
         "items": [
-          "Bản thử nghiệm mới nhất",
+          "Đầy đủ tất cả tính năng",
+          "Cập nhật phiên bản mới miễn phí",
+          "Không quảng cáo, không thu thập dữ liệu",
           "Hướng dẫn cài đặt qua Zalo"
         ],
         "highlight": true
@@ -487,6 +489,10 @@
     ],
     "faq": [
       {
+        "q": "WinCare có mất phí không?",
+        "a": "Không. WinCare miễn phí, không có gói trả phí hay tính năng bị khóa. Các bản cập nhật về sau cũng miễn phí."
+      },
+      {
         "q": "WinCare có xóa nhầm tệp của tôi không?",
         "a": "Sắp xếp tệp không bao giờ xóa tệp, luôn sao lưu và kiểm tra bằng SHA-256 trước khi di chuyển. Tệp trùng chỉ chuyển vào Thùng rác."
       },
@@ -496,7 +502,7 @@
       },
       {
         "q": "Vì sao Windows cảnh báo khi cài?",
-        "a": "Bộ cài chưa có chữ ký số. Đây là bản thử nghiệm; bản chính thức sẽ được ký số."
+        "a": "Bộ cài chưa có chữ ký số nên Windows SmartScreen hiện cảnh báo 'nhà phát hành không xác định'. Bấm 'Thông tin thêm' → 'Vẫn chạy' để cài."
       },
       {
         "q": "Đã dùng ổn định trên máy thật chưa?",
