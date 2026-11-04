@@ -392,7 +392,32 @@
       "Không có tính năng 'tăng tốc' giả gây hại máy"
     ],
     "description": "WinCare là phần mềm chăm sóc máy tính Windows dành cho người dùng văn phòng, không cần rành kỹ thuật. Giao diện tiếng Việt, câu chữ dễ hiểu, luôn nói rõ máy sắp làm gì trước khi làm.\n\nNguyên tắc của WinCare là **an toàn trước, hiệu quả sau**: sắp xếp tệp luôn sao lưu và kiểm tra lại trước khi di chuyển, không bao giờ xóa tệp; tệp trùng chỉ chuyển vào Thùng rác; lỗi phần cứng ổ đĩa thì hướng dẫn cứu dữ liệu chứ không giả vờ sửa được.\n\n**Đây là bản thử nghiệm.** Phần mềm đã qua 62 bài kiểm thử tự động nhưng chưa được kiểm chứng đầy đủ trên máy Windows thật, và bộ cài chưa có chữ ký số nên Windows sẽ hiện cảnh báo khi cài. Bản thử nghiệm được cung cấp miễn phí để nhận góp ý.",
-    "images": [],
+    "images": [
+      {
+        "src": "uploads/wincare/01.webp",
+        "caption": "Tổng quan: điểm sức khỏe máy, CPU, RAM, ổ đĩa, mạng theo thời gian thực và danh sách việc nên làm (dữ liệu minh họa)"
+      },
+      {
+        "src": "uploads/wincare/02.webp",
+        "caption": "Dọn rác: quét trước (chưa xóa gì), xem dung lượng từng mục, chọn rồi mới dọn (dữ liệu minh họa)"
+      },
+      {
+        "src": "uploads/wincare/03.webp",
+        "caption": "Sức khỏe ổ cứng: đọc chỉ số SMART (nhiệt độ, độ mòn SSD, lỗi đọc/ghi) và giải pháp đề xuất theo thứ tự (dữ liệu minh họa)"
+      },
+      {
+        "src": "uploads/wincare/04.webp",
+        "caption": "Bộ nhớ RAM: ứng dụng nào chiếm RAM, vì sao máy chậm, RAM lắp trong máy và cách xử lý đúng (dữ liệu minh họa)"
+      },
+      {
+        "src": "uploads/wincare/05.webp",
+        "caption": "Khởi động & dịch vụ: bật/tắt ứng dụng chạy cùng Windows, chỉ tắt chứ không xóa, khôi phục được (dữ liệu minh họa)"
+      },
+      {
+        "src": "uploads/wincare/06.webp",
+        "caption": "Sửa lỗi Windows: mỗi thẻ hiện đúng lệnh sẽ chạy (DNS, mạng, Windows Update, SFC, DISM, Taskbar) (dữ liệu minh họa)"
+      }
+    ],
     "video": "",
     "demo": "",
     "features": [
