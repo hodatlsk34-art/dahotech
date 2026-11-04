@@ -1,0 +1,22 @@
+{
+  "name": "Xưởng App",
+  "slogan": "Phần mềm cho trường học và văn phòng",
+  "heroTitle": "Phần mềm làm từ công việc thật ở trường học và văn phòng",
+  "heroHighlight": "công việc thật",
+  "heroText": "Mỗi sản phẩm ra đời để giải một việc cụ thể và được dùng trên dữ liệu thật trước khi bán. Dùng thử miễn phí, trao đổi trực tiếp với người làm ra phần mềm.",
+  "owner": "[Họ và tên của bạn]",
+  "taxCode": "[Mã số thuế cá nhân]",
+  "area": "[Phường/xã, Tỉnh/thành phố]",
+  "email": "[email@cua-ban.com]",
+  "phone": "[09xx xxx xxx]",
+  "zalo": "",
+  "trialDays": 14,
+  "responseHours": 24,
+  "deliveryHours": 24,
+  "refundDays": 7,
+  "updated": "04/11/2026",
+  "categories": ["Giáo dục", "Văn phòng & quản trị", "Kinh doanh & dịch vụ", "Tiện ích"],
+  "mode": "catalog",
+  "bank": { "bin": "", "account": "", "holder": "", "bankName": "" },
+  "badgeHtml": ""
+}
