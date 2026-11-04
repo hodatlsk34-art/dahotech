@@ -356,13 +356,13 @@ function viewProduct(p){
   <div class="wrap">
     ${p.description ? `<section class="p-sec" id="tong-quan"><h2>Tổng quan</h2><div class="prose">${md(p.description)}</div></section>` : ""}
     ${(p.features||[]).length ? `<section class="p-sec" id="tinh-nang"><h2>Tính năng</h2><div class="feats">${p.features.map((f,i)=>`<div class="feat"><span class="tile">${String(i+1).padStart(2,"0")}</span><b>${esc(f.title)}</b><span>${esc(f.text)}</span></div>`).join("")}</div></section>` : ""}
-    ${(p.plans||[]).length ? `<section class="p-sec" id="bang-gia"><h2>Bảng giá</h2><div class="plans">${p.plans.map((pl,i)=>`
-      <div class="plan${pl.highlight?" hot":""}">${pl.highlight?`<span class="flag">Nên chọn</span>`:""}
-        <h3>${esc(pl.name)}</h3>${pl.audience?`<p class="aud">${esc(pl.audience)}</p>`:""}
+    ${(p.plans||[]).length ? `<section class="p-sec" id="bang-gia"><h2>Bảng giá</h2><div class="plans${p.plans.length===1?" one":""}">${p.plans.map((pl,i)=>`
+      <div class="plan${pl.highlight?" hot":""}">${pl.highlight&&p.plans.length>1?`<span class="flag">Nên chọn</span>`:""}
+        ${String(pl.name||"").trim().toLowerCase()===String(planPrice(pl)).replace(/<[^>]+>/g,"").trim().toLowerCase()?"":`<h3>${esc(pl.name)}</h3>`}${pl.audience?`<p class="aud">${esc(pl.audience)}</p>`:""}
         <div class="amt">${planPrice(pl)}${isNum(pl.price)&&Number(pl.price)>0&&pl.unit?` <small>${esc(pl.unit)}</small>`:""}</div>
         ${(pl.items||[]).filter(Boolean).length?`<ul>${pl.items.filter(Boolean).map(x=>`<li>${I.check}<span>${esc(x)}</span></li>`).join("")}</ul>`:""}
         <button type="button" class="btn ${pl.highlight?"btn-primary":"btn-outline"} btn-block" data-buy="${i}">${isNum(pl.price)&&Number(pl.price)===0?"Nhận bản miễn phí":(!isNum(pl.price)?"Nhận báo giá":"Chọn gói này")}</button>
-      </div>`).join("")}</div><p class="fine">Giá chưa gồm chi phí máy chủ, tên miền, khóa AI (nếu có) do đơn vị tự đăng ký. Cần hóa đơn, vui lòng báo trước khi thanh toán.</p></section>` : ""}
+      </div>`).join("")}</div>${p.plans.every(pl=>isNum(pl.price)&&Number(pl.price)===0)?"":`<p class="fine">Giá chưa gồm chi phí máy chủ, tên miền, khóa AI (nếu có) do đơn vị tự đăng ký. Cần hóa đơn, vui lòng báo trước khi thanh toán.</p>`}</section>` : ""}
     ${(p.requirements||[]).length ? `<section class="p-sec" id="yeu-cau"><h2>Yêu cầu hệ thống</h2><table class="req"><tbody>${p.requirements.map(r=>`<tr><th scope="row">${esc(r.label)}</th><td>${esc(r.value)}</td></tr>`).join("")}</tbody></table></section>` : ""}
     ${(p.faq||[]).length ? `<section class="p-sec" id="hoi-dap"><h2>Hỏi đáp</h2><div class="faq">${p.faq.map(f=>`<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join("")}</div></section>` : ""}
     ${(p.changelog||[]).length ? `<section class="p-sec" id="cap-nhat"><h2>Nhật ký cập nhật</h2><ul class="log">${p.changelog.map(c=>`<li><div class="v"><b>Phiên bản ${esc(c.version)}</b><small>${esc(fmtDate(c.date))}</small></div><p>${esc(c.text)}</p></li>`).join("")}</ul></section>` : ""}
