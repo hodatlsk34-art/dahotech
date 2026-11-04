@@ -40,6 +40,7 @@ const I = {
   user: sv('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'),
   heart: sv('<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/>'),
   doc: sv('<path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h4"/>'),
+  dl: sv('<path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/>'),
   play: sv('<circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/>'),
   filter: sv('<path d="M3 5h18l-7 8v6l-4 2v-8z"/>'),
   wand: sv('<path d="m15 4 5 5L9 20H4v-5z"/><path d="m13 6 5 5"/>'),
@@ -94,6 +95,8 @@ function fromPrice(p){
 }
 const priceClass = p => { const t = fromPrice(p); return /^Từ/.test(t) ? "" : (/Miễn phí/.test(t) ? "free" : "ask"); };
 const minPaid = p => { const v = (p.plans||[]).map(x=>x.price).filter(x => isNum(x) && Number(x) > 0).map(Number); return v.length ? Math.min(...v) : Infinity; };
+const dlBtn = (p, cls, label) => `<a class="btn ${cls}" href="${esc(p.download)}" download data-dl>${I.dl} ${label}</a>`;
+const dlLabel = p => "Tải về miễn phí" + (p.downloadSize ? ` (${esc(p.downloadSize)})` : "");
 const hasFree = p => (p.plans||[]).some(x => isNum(x.price) && Number(x.price) === 0);
 const statusPill = p => p.status === "beta" ? `<span class="pill beta">Thử nghiệm</span>` : `<span class="pill live">Đang dùng thực tế</span>`;
 const visible = () => S.products.filter(p => p.published !== false);
@@ -344,10 +347,11 @@ function viewProduct(p){
         ${p.updated?`<p class="muted small-note">Cập nhật ${esc(fmtDate(p.updated))}</p>`:""}
         ${(p.highlights||[]).filter(Boolean).length ? `<ul class="checks">${p.highlights.filter(Boolean).map(h=>`<li><span class="ok">${I.check}</span><span>${esc(h)}</span></li>`).join("")}</ul>` : ""}
         <div class="p-cta">
-          <button type="button" class="btn btn-primary" data-buy="">${I.play} ${fromPrice(p) === "Miễn phí" ? "Nhận bản miễn phí" : "Dùng thử " + esc(s.trialDays) + " ngày"}</button>
+          ${p.download ? dlBtn(p, "btn-primary", dlLabel(p)) : `<button type="button" class="btn btn-primary" data-buy="">${I.play} ${fromPrice(p) === "Miễn phí" ? "Nhận bản miễn phí" : "Dùng thử " + esc(s.trialDays) + " ngày"}</button>`}
           ${(p.plans||[]).length ? `<a class="btn btn-outline" href="#bang-gia" data-jump="bang-gia">Xem bảng giá</a>` : ""}
           ${p.video ? `<a class="btn btn-ghost" href="${esc(p.video)}" target="_blank" rel="noopener">${I.play} Video</a>` : ""}
         </div>
+        ${p.download && p.downloadNote ? `<p class="dl-note">${esc(p.downloadNote)}</p>` : ""}
         <div class="p-note"><span>${I.reply} Phản hồi trong ${esc(s.responseHours)} giờ làm việc</span><span>${I.shield} <a href="#giay-phep">Giấy phép sử dụng</a></span><span>Mã sản phẩm <span class="mono">${esc(String(p.id).toUpperCase())}</span></span></div>
       </div>
     </div>
@@ -361,13 +365,13 @@ function viewProduct(p){
         ${String(pl.name||"").trim().toLowerCase()===String(planPrice(pl)).replace(/<[^>]+>/g,"").trim().toLowerCase()?"":`<h3>${esc(pl.name)}</h3>`}${pl.audience?`<p class="aud">${esc(pl.audience)}</p>`:""}
         <div class="amt">${planPrice(pl)}${isNum(pl.price)&&Number(pl.price)>0&&pl.unit?` <small>${esc(pl.unit)}</small>`:""}</div>
         ${(pl.items||[]).filter(Boolean).length?`<ul>${pl.items.filter(Boolean).map(x=>`<li>${I.check}<span>${esc(x)}</span></li>`).join("")}</ul>`:""}
-        <button type="button" class="btn ${pl.highlight?"btn-primary":"btn-outline"} btn-block" data-buy="${i}">${isNum(pl.price)&&Number(pl.price)===0?"Nhận bản miễn phí":(!isNum(pl.price)?"Nhận báo giá":"Chọn gói này")}</button>
+        ${p.download && isNum(pl.price) && Number(pl.price)===0 ? dlBtn(p, (pl.highlight?"btn-primary":"btn-outline")+" btn-block", "Tải về miễn phí") : `<button type="button" class="btn ${pl.highlight?"btn-primary":"btn-outline"} btn-block" data-buy="${i}">${isNum(pl.price)&&Number(pl.price)===0?"Nhận bản miễn phí":(!isNum(pl.price)?"Nhận báo giá":"Chọn gói này")}</button>`}
       </div>`).join("")}</div>${p.plans.every(pl=>isNum(pl.price)&&Number(pl.price)===0)?"":`<p class="fine">Giá chưa gồm chi phí máy chủ, tên miền, khóa AI (nếu có) do đơn vị tự đăng ký. Cần hóa đơn, vui lòng báo trước khi thanh toán.</p>`}</section>` : ""}
     ${(p.requirements||[]).length ? `<section class="p-sec" id="yeu-cau"><h2>Yêu cầu hệ thống</h2><table class="req"><tbody>${p.requirements.map(r=>`<tr><th scope="row">${esc(r.label)}</th><td>${esc(r.value)}</td></tr>`).join("")}</tbody></table></section>` : ""}
     ${(p.faq||[]).length ? `<section class="p-sec" id="hoi-dap"><h2>Hỏi đáp</h2><div class="faq">${p.faq.map(f=>`<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join("")}</div></section>` : ""}
     ${(p.changelog||[]).length ? `<section class="p-sec" id="cap-nhat"><h2>Nhật ký cập nhật</h2><ul class="log">${p.changelog.map(c=>`<li><div class="v"><b>Phiên bản ${esc(c.version)}</b><small>${esc(fmtDate(c.date))}</small></div><p>${esc(c.text)}</p></li>`).join("")}</ul></section>` : ""}
-    <div class="buybar" role="region" aria-label="Mua nhanh"><div><b class="${pc}">${esc(fromPrice(p))}</b><small>${esc(p.name)}</small></div><button type="button" class="btn btn-primary btn-sm" data-buy="">${fromPrice(p) === "Miễn phí" ? "Nhận miễn phí" : "Dùng thử"}</button></div>
-    <section style="padding-block:24px 72px"><div class="cta-band"><span class="art">${I.play.replace('class="ic"','')}</span><div><h2>Thử ${esc(p.name)} trên công việc thật của bạn</h2><p>Dùng thử ${esc(s.trialDays)} ngày, có hướng dẫn cài đặt và hỗ trợ trực tiếp.</p></div><button type="button" class="btn btn-white" data-buy="">Xin dùng thử ${I.arrow}</button></div></section>
+    <div class="buybar" role="region" aria-label="Mua nhanh"><div><b class="${pc}">${esc(fromPrice(p))}</b><small>${esc(p.name)}</small></div>${p.download ? dlBtn(p, "btn-primary btn-sm", "Tải về") : `<button type="button" class="btn btn-primary btn-sm" data-buy="">${fromPrice(p) === "Miễn phí" ? "Nhận miễn phí" : "Dùng thử"}</button>`}</div>
+    <section style="padding-block:24px 72px"><div class="cta-band"><span class="art">${I.play.replace('class="ic"','')}</span><div><h2>${fromPrice(p) === "Miễn phí" ? `Dùng ${esc(p.name)} miễn phí ngay hôm nay` : `Thử ${esc(p.name)} trên công việc thật của bạn`}</h2><p>${fromPrice(p) === "Miễn phí" ? "Miễn phí, có hướng dẫn cài đặt và hỗ trợ trực tiếp khi cần." : `Dùng thử ${esc(s.trialDays)} ngày, có hướng dẫn cài đặt và hỗ trợ trực tiếp.`}</p></div>${p.download ? dlBtn(p, "btn-white", "Tải về miễn phí") : `<button type="button" class="btn btn-white" data-buy="">${fromPrice(p) === "Miễn phí" ? "Nhận bản miễn phí" : "Xin dùng thử"} ${I.arrow}</button>`}</div></section>
   </div>`;
   let cur = 0;
   const show = i => { cur = i; $("#gImg").src = im(i); $("#gImg").alt = imgs[i].caption || "Giao diện " + p.name; $("#gCap").textContent = imgs[i].caption || "";

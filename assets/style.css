@@ -415,3 +415,4 @@ dialog.search-dlg{width:min(640px,calc(100vw - 24px));align-self:start;margin-to
   .buybar small{display:block;color:var(--muted);font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   body:has(.buybar) footer{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 }
+.dl-note{margin:10px 0 0;font-size:13.5px;color:var(--muted,#64748b);line-height:1.5}

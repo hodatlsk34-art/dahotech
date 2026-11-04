@@ -464,7 +464,7 @@
           "Đầy đủ tất cả tính năng",
           "Cập nhật phiên bản mới miễn phí",
           "Không quảng cáo, không thu thập dữ liệu",
-          "Hướng dẫn cài đặt qua Zalo"
+          "Hỗ trợ cài đặt qua Zalo khi cần"
         ],
         "highlight": true
       }
@@ -476,7 +476,7 @@
       },
       {
         "label": "Dung lượng",
-        "value": "Bộ cài khoảng 78 MB; khoảng 270 MB sau khi cài"
+        "value": "Bộ cài 72 MB; khoảng 270 MB sau khi cài"
       },
       {
         "label": "Quyền cài đặt",
@@ -512,7 +512,7 @@
     "changelog": [
       {
         "version": "0.5",
-        "date": "",
+        "date": "2026-10-28",
         "text": "Thêm mục Bộ nhớ RAM: chẩn đoán nguyên nhân, đóng ứng dụng an toàn, gợi ý nâng cấp."
       },
       {
@@ -532,6 +532,9 @@
       }
     ],
     "rightsConfirmed": true,
-    "cleanConfirmed": true
+    "cleanConfirmed": true,
+    "download": "downloads/WinCare-Setup-0.5.0.exe",
+    "downloadSize": "72 MB",
+    "downloadNote": "Bộ cài chưa có chữ ký số: nếu Windows hiện cảnh báo, bấm \"Thông tin thêm\" → \"Vẫn chạy\". Cần hỗ trợ cài đặt, nhắn Zalo."
   }
 ]

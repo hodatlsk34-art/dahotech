@@ -59,7 +59,7 @@ function thumbHTML(p){
 function newProduct(){
   return { id:"", example:false, published:false, featured:false, name:"", category:(A.site.categories||[])[0]||"", platforms:["Web"], status:"live",
     version:"1.0", updated:today(), tint:TINTS[A.products.length % TINTS.length], tagline:"", highlights:["","",""], description:"",
-    images:[], video:"", demo:"", features:[{title:"",text:""},{title:"",text:""},{title:"",text:""}],
+    images:[], video:"", demo:"", download:"", downloadSize:"", downloadNote:"", features:[{title:"",text:""},{title:"",text:""},{title:"",text:""}],
     plans:[{name:"Dùng thử", price:0, unit:"", audience:"", items:[], highlight:false},{name:"Đơn vị", price:null, unit:"/năm", audience:"", items:[], highlight:true}],
     requirements:[{label:"Hệ điều hành / trình duyệt", value:""}], faq:[], changelog:[], rightsConfirmed:false, cleanConfirmed:false };
 }
@@ -290,6 +290,11 @@ function viewEditor(keepScroll){
         <div class="g2">
           <label class="field"><span>Link video giới thiệu</span>${inp("video","https://youtube.com/…","url")}</label>
         </div>
+        <div class="g2">
+          <label class="field"><span>Link tải về (chỉ cho sản phẩm miễn phí)</span>${inp("download","https://… hoặc downloads/ten-file.exe")}</label>
+          <label class="field"><span>Dung lượng tệp tải</span>${inp("downloadSize","Ví dụ: 72 MB")}</label>
+        </div>
+        <label class="field"><span>Lưu ý khi tải / cài đặt</span>${inp("downloadNote","Ví dụ: Windows cảnh báo thì bấm Thông tin thêm → Vẫn chạy")}</label>
       </section>
       <section class="box" id="s-tinh-nang"><h2><span class="n">4</span>Tính năng</h2>
         <p class="lead">Mỗi tính năng: tiêu đề ngắn + một câu nói lợi ích. 4–6 tính năng là đẹp nhất.</p>
