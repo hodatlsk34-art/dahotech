@@ -6,42 +6,121 @@
     "featured": true,
     "name": "Chấm Phiếu Trắc Nghiệm",
     "category": "Giáo dục",
-    "platforms": ["Web", "Điện thoại"],
+    "platforms": [
+      "Web",
+      "Điện thoại"
+    ],
     "status": "live",
     "version": "2.6",
     "updated": "2026-10-19",
     "tint": "#3434c9",
     "tagline": "Chấm phiếu tô THPT 2025 từ ảnh scan, ảnh chụp, PDF hoặc camera điện thoại.",
-    "highlights": ["Ảnh bài thi không rời khỏi máy chấm", "Đọc kiểm chứng hai lần, gắn cờ đúng ô nghi vấn", "Xuất bảng điểm, phiếu báo điểm theo lớp"],
+    "highlights": [
+      "Ảnh bài thi không rời khỏi máy chấm",
+      "Đọc kiểm chứng hai lần, gắn cờ đúng ô nghi vấn",
+      "Xuất bảng điểm, phiếu báo điểm theo lớp"
+    ],
     "description": "Chấm Phiếu chạy hoàn toàn trên trình duyệt: không cần cài đặt, không gửi ảnh bài thi lên máy chủ. Phần mềm được hiệu chỉnh trên 619 phiếu Toán thật scan 200 dpi.\n\nPhiếu nào máy không chắc chắn đều vào hàng soát kèm vị trí ô lỗi, nên không có phiếu sai được chấp nhận âm thầm.",
     "images": [],
     "video": "",
     "demo": "",
     "features": [
-      {"title": "3 mẫu phiếu", "text": "THPT 2025 (40 + 8 + 6), ĐGNL 120 câu, phiếu linh hoạt; in sẵn họ tên theo danh sách."},
-      {"title": "Chấm hàng loạt", "text": "Kéo thả ảnh, PDF, cả thư mục; hoặc quét liên tục bằng camera điện thoại."},
-      {"title": "Soát bài có kiểm soát", "text": "Phóng tới đúng ô lỗi, sửa kèm lý do, lưu lịch sử từng phiếu."},
-      {"title": "Đợt thi nhiều môn", "text": "Bảng Khối × Môn, tổng hợp điểm cả đợt, phiếu báo điểm nhiều môn."},
-      {"title": "Báo cáo chuyên môn", "text": "Phổ điểm, độ khó, độ phân cách, câu sai nhiều nhất; xuất Excel."},
-      {"title": "Quản trị", "text": "4 vai trò, nhật ký thao tác, chốt kết quả, sao lưu và phục hồi."}
+      {
+        "title": "3 mẫu phiếu",
+        "text": "THPT 2025 (40 + 8 + 6), ĐGNL 120 câu, phiếu linh hoạt; in sẵn họ tên theo danh sách."
+      },
+      {
+        "title": "Chấm hàng loạt",
+        "text": "Kéo thả ảnh, PDF, cả thư mục; hoặc quét liên tục bằng camera điện thoại."
+      },
+      {
+        "title": "Soát bài có kiểm soát",
+        "text": "Phóng tới đúng ô lỗi, sửa kèm lý do, lưu lịch sử từng phiếu."
+      },
+      {
+        "title": "Đợt thi nhiều môn",
+        "text": "Bảng Khối × Môn, tổng hợp điểm cả đợt, phiếu báo điểm nhiều môn."
+      },
+      {
+        "title": "Báo cáo chuyên môn",
+        "text": "Phổ điểm, độ khó, độ phân cách, câu sai nhiều nhất; xuất Excel."
+      },
+      {
+        "title": "Quản trị",
+        "text": "4 vai trò, nhật ký thao tác, chốt kết quả, sao lưu và phục hồi."
+      }
     ],
     "plans": [
-      {"name": "Dùng thử", "price": 0, "unit": "", "audience": "Thử trên kỳ kiểm tra thật của bạn", "items": ["Đủ tính năng trong 14 ngày", "Hướng dẫn qua Zalo"], "highlight": false},
-      {"name": "Trường học", "price": null, "unit": "/năm", "audience": "Toàn trường, không giới hạn số phiếu", "items": ["Không giới hạn số máy chấm", "Cập nhật trong năm", "Hỗ trợ trong giờ hành chính"], "highlight": true},
-      {"name": "Theo đợt thi", "price": null, "unit": "/đợt", "audience": "Trung tâm, kỳ thi thử", "items": ["Một đợt thi nhiều môn", "Hỗ trợ trong ngày thi"], "highlight": false}
+      {
+        "name": "Dùng thử",
+        "price": 0,
+        "unit": "",
+        "audience": "Thử trên kỳ kiểm tra thật của bạn",
+        "items": [
+          "Đủ tính năng trong 14 ngày",
+          "Hướng dẫn qua Zalo"
+        ],
+        "highlight": false
+      },
+      {
+        "name": "Trường học",
+        "price": null,
+        "unit": "/năm",
+        "audience": "Toàn trường, không giới hạn số phiếu",
+        "items": [
+          "Không giới hạn số máy chấm",
+          "Cập nhật trong năm",
+          "Hỗ trợ trong giờ hành chính"
+        ],
+        "highlight": true
+      },
+      {
+        "name": "Theo đợt thi",
+        "price": null,
+        "unit": "/đợt",
+        "audience": "Trung tâm, kỳ thi thử",
+        "items": [
+          "Một đợt thi nhiều môn",
+          "Hỗ trợ trong ngày thi"
+        ],
+        "highlight": false
+      }
     ],
     "requirements": [
-      {"label": "Trình duyệt", "value": "Chrome hoặc Edge bản mới, trên máy tính hoặc điện thoại"},
-      {"label": "Máy scan", "value": "Khuyến nghị 200 dpi, ảnh xám hoặc màu"},
-      {"label": "Dữ liệu", "value": "Lưu trong trình duyệt; sao lưu ra tệp .zip"}
+      {
+        "label": "Trình duyệt",
+        "value": "Chrome hoặc Edge bản mới, trên máy tính hoặc điện thoại"
+      },
+      {
+        "label": "Máy scan",
+        "value": "Khuyến nghị 200 dpi, ảnh xám hoặc màu"
+      },
+      {
+        "label": "Dữ liệu",
+        "value": "Lưu trong trình duyệt; sao lưu ra tệp .zip"
+      }
     ],
     "faq": [
-      {"q": "Dữ liệu học sinh có được gửi đi đâu không?", "a": "Không. Ảnh phiếu, danh sách, điểm đều lưu trong trình duyệt của máy chấm."},
-      {"q": "Hết hạn dùng thử thì mất dữ liệu không?", "a": "Không. Phần mềm khóa thao tác, dữ liệu vẫn còn; nhập mã chính thức là dùng tiếp."}
+      {
+        "q": "Dữ liệu học sinh có được gửi đi đâu không?",
+        "a": "Không. Ảnh phiếu, danh sách, điểm đều lưu trong trình duyệt của máy chấm."
+      },
+      {
+        "q": "Hết hạn dùng thử thì mất dữ liệu không?",
+        "a": "Không. Phần mềm khóa thao tác, dữ liệu vẫn còn; nhập mã chính thức là dùng tiếp."
+      }
     ],
     "changelog": [
-      {"version": "2.6", "date": "2026-10-19", "text": "Chấm được phiếu mất một góc bất kỳ; thống kê câu sai nhiều nhất."},
-      {"version": "2.5", "date": "2026-10-14", "text": "Hiệu chỉnh trên 619 phiếu thật: phiếu không cần soát tăng từ 336 lên 563."}
+      {
+        "version": "2.6",
+        "date": "2026-10-19",
+        "text": "Chấm được phiếu mất một góc bất kỳ; thống kê câu sai nhiều nhất."
+      },
+      {
+        "version": "2.5",
+        "date": "2026-10-14",
+        "text": "Hiệu chỉnh trên 619 phiếu thật: phiếu không cần soát tăng từ 336 lên 563."
+      }
     ],
     "rightsConfirmed": false,
     "cleanConfirmed": false
@@ -53,27 +132,67 @@
     "featured": false,
     "name": "Relax Office",
     "category": "Tiện ích",
-    "platforms": ["Web", "Điện thoại"],
+    "platforms": [
+      "Web",
+      "Điện thoại"
+    ],
     "status": "live",
     "version": "1.0",
     "updated": "2026-11-02",
     "tint": "#2f7a6a",
     "tagline": "Góc thư giãn giữa giờ: âm thanh thiên nhiên, quán cà phê ảo, Pomodoro, bài thở.",
-    "highlights": ["Cài lên điện thoại, chạy khi không có mạng", "Không cần tài khoản", "Âm thanh do máy tạo, không vướng bản quyền"],
+    "highlights": [
+      "Cài lên điện thoại, chạy khi không có mạng",
+      "Không cần tài khoản",
+      "Âm thanh do máy tạo, không vướng bản quyền"
+    ],
     "description": "Relax Office giúp nhân viên văn phòng nghỉ ngắn có chủ đích: chọn tâm trạng, nhận gợi ý một không gian hoặc bài thở phù hợp.",
     "images": [],
     "video": "",
     "demo": "",
     "features": [
-      {"title": "9 không gian thiên nhiên", "text": "Hình động và âm thanh riêng, hẹn giờ tắt."},
-      {"title": "Bộ trộn 21 lớp âm", "text": "6 bộ trộn có sẵn, lưu bộ trộn của riêng bạn."},
-      {"title": "Quán cà phê ảo", "text": "Pomodoro 25/5/15 vẫn chạy khi chuyển màn hình."}
+      {
+        "title": "9 không gian thiên nhiên",
+        "text": "Hình động và âm thanh riêng, hẹn giờ tắt."
+      },
+      {
+        "title": "Bộ trộn 21 lớp âm",
+        "text": "6 bộ trộn có sẵn, lưu bộ trộn của riêng bạn."
+      },
+      {
+        "title": "Quán cà phê ảo",
+        "text": "Pomodoro 25/5/15 vẫn chạy khi chuyển màn hình."
+      }
     ],
     "plans": [
-      {"name": "Cá nhân", "price": null, "unit": "", "audience": "Một người dùng", "items": ["Toàn bộ tính năng"], "highlight": false},
-      {"name": "Doanh nghiệp", "price": null, "unit": "/năm", "audience": "Gắn logo, màu thương hiệu", "items": ["Tên miền riêng", "Cập nhật trong năm"], "highlight": true}
+      {
+        "name": "Cá nhân",
+        "price": null,
+        "unit": "",
+        "audience": "Một người dùng",
+        "items": [
+          "Toàn bộ tính năng"
+        ],
+        "highlight": false
+      },
+      {
+        "name": "Doanh nghiệp",
+        "price": null,
+        "unit": "/năm",
+        "audience": "Gắn logo, màu thương hiệu",
+        "items": [
+          "Tên miền riêng",
+          "Cập nhật trong năm"
+        ],
+        "highlight": true
+      }
     ],
-    "requirements": [{"label": "Thiết bị", "value": "Trình duyệt máy tính, điện thoại; cài như ứng dụng"}],
+    "requirements": [
+      {
+        "label": "Thiết bị",
+        "value": "Trình duyệt máy tính, điện thoại; cài như ứng dụng"
+      }
+    ],
     "faq": [],
     "changelog": [],
     "rightsConfirmed": false,
@@ -86,24 +205,54 @@
     "featured": false,
     "name": "WinCare",
     "category": "Tiện ích",
-    "platforms": ["Windows"],
+    "platforms": [
+      "Windows"
+    ],
     "status": "beta",
     "version": "0.5",
     "updated": "2026-10-08",
     "tint": "#334155",
     "tagline": "Chăm sóc máy Windows: dọn rác an toàn, sắp xếp tệp có hoàn tác, kiểm tra ổ cứng và RAM.",
-    "highlights": ["Mọi thao tác đều có sao lưu hoặc hoàn tác", "Không gửi dữ liệu ra ngoài"],
+    "highlights": [
+      "Mọi thao tác đều có sao lưu hoặc hoàn tác",
+      "Không gửi dữ liệu ra ngoài"
+    ],
     "description": "Bản thử nghiệm: chưa kiểm chứng đầy đủ trên Windows thật, bộ cài chưa ký số.",
     "images": [],
     "video": "",
     "demo": "",
     "features": [
-      {"title": "Sắp xếp tệp", "text": "4 cách sắp xếp, sao lưu kiểm tra SHA-256, hoàn tác một bấm."},
-      {"title": "Sức khỏe ổ cứng", "text": "Phát hiện ổ sắp hỏng, sao lưu khẩn cấp."},
-      {"title": "Chẩn đoán RAM", "text": "Tìm nguyên nhân thay cho nút \"dọn RAM\" giả."}
+      {
+        "title": "Sắp xếp tệp",
+        "text": "4 cách sắp xếp, sao lưu kiểm tra SHA-256, hoàn tác một bấm."
+      },
+      {
+        "title": "Sức khỏe ổ cứng",
+        "text": "Phát hiện ổ sắp hỏng, sao lưu khẩn cấp."
+      },
+      {
+        "title": "Chẩn đoán RAM",
+        "text": "Tìm nguyên nhân thay cho nút \"dọn RAM\" giả."
+      }
     ],
-    "plans": [{"name": "Tham gia thử nghiệm", "price": 0, "unit": "", "audience": "Góp ý lỗi để hoàn thiện", "items": ["Bản thử nghiệm mới nhất"], "highlight": false}],
-    "requirements": [{"label": "Hệ điều hành", "value": "Windows 10 / 11"}],
+    "plans": [
+      {
+        "name": "Tham gia thử nghiệm",
+        "price": 0,
+        "unit": "",
+        "audience": "Góp ý lỗi để hoàn thiện",
+        "items": [
+          "Bản thử nghiệm mới nhất"
+        ],
+        "highlight": false
+      }
+    ],
+    "requirements": [
+      {
+        "label": "Hệ điều hành",
+        "value": "Windows 10 / 11"
+      }
+    ],
     "faq": [],
     "changelog": [],
     "rightsConfirmed": false,
