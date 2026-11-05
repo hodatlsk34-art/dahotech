@@ -171,7 +171,7 @@ function shell(){
   $("#foot").innerHTML = `<div class="wrap">
     <div class="f-brand"><a class="brand" href="#" aria-label="${esc(s.name)} – Trang chủ">${logo}</a>
       ${s.slogan ? `<p class="about"><b>${esc(s.slogan)}</b></p>` : ""}
-      <p class="about">Phần mềm, Web App và công cụ số do ${esc(s.name)} nghiên cứu, phát triển cho cá nhân và tổ chức quy mô vừa và nhỏ.</p>
+      <p class="about">Phần mềm, Web App và công cụ số do ${esc(s.name)} nghiên cứu, phát triển cho cá nhân, công ty và cửa hàng có quy mô vừa và nhỏ.</p>
       ${s.badgeHtml ? `<div style="margin-top:14px">${s.badgeHtml}</div>` : ""}</div>
     <div><h4>Sản phẩm</h4><ul><li><a href="#san-pham" data-setcat="">Tất cả sản phẩm</a></li>${cats.slice(0,5).map(c=>`<li><a href="#san-pham" data-setcat="${esc(c)}">${esc(c)}</a></li>`).join("")}<li><a href="#giai-phap">Giải pháp</a></li></ul></div>
     <div><h4>Hỗ trợ</h4><ul><li><a href="#cach-mua">Cách dùng thử và mua</a></li><li><a href="#dat-lam">Đặt làm phần mềm riêng</a></li><li><a href="#lien-he">Liên hệ</a></li></ul></div>
@@ -276,7 +276,7 @@ const processHTML = () => `<ol class="process">
   <li><b>Báo giá</b><span>Xác nhận gói, phạm vi, thời hạn.</span></li>
   <li><b>Thanh toán</b><span>Chuyển khoản theo thông tin gửi riêng.</span></li>
   <li><b>Bàn giao</b><span>Mã kích hoạt, hướng dẫn trong ${esc(S.site.deliveryHours)} giờ.</span></li></ol>`;
-const ctaBand = () => `<div class="cta-band"><div><h2>Chưa thấy phần mềm phù hợp?</h2><p>Xem toàn bộ sản phẩm, hoặc gửi yêu cầu để ${esc(S.site.name)} tư vấn phát triển riêng cho cá nhân và tổ chức quy mô vừa và nhỏ.</p></div><div class="acts"><a class="btn btn-primary" href="#san-pham" data-setcat="">${I.bag} Khám phá sản phẩm</a><a class="btn btn-outline" href="#dat-lam">Gửi yêu cầu phát triển riêng</a></div></div>`;
+const ctaBand = () => `<div class="cta-band"><div><h2>Chưa thấy phần mềm phù hợp?</h2><p>Xem toàn bộ sản phẩm, hoặc gửi yêu cầu để ${esc(S.site.name)} tư vấn phát triển riêng cho cá nhân, công ty và cửa hàng có quy mô vừa và nhỏ.</p></div><div class="acts"><a class="btn btn-primary" href="#san-pham" data-setcat="">${I.bag} Khám phá sản phẩm</a><a class="btn btn-outline" href="#dat-lam">Gửi yêu cầu phát triển riêng</a></div></div>`;
 function solutionsHTML(limit){
   const cats = usedCats().slice(0, limit || 99);
   return `<div class="sols">${cats.map(c => { const st = catStyle(c), ps = visible().filter(p => p.category === c);
